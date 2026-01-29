@@ -164,25 +164,141 @@
 
     /* Smooth scrolling */
     html { scroll-behavior: smooth; }
+
+    /* Brand in topbar */
+    .brand {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10001;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color: #333;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(243, 235, 216, 0.7);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: none; /* only show on mobile */
+    }
+
+    /* Hamburger button */
+    .menu-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10002;
+      display: none; /* only show on mobile */
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 900;
+      color: #333;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      background: rgba(243, 235, 216, 0.7);
+    }
+
+    .menu-btn:active { transform: translateY(1px); }
+
+    /* Mobile dropdown menu */
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      left: 16px;
+      right: 16px;
+      z-index: 10003;
+      background: rgba(243, 235, 216, 0.95);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 800;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    .mobile-menu .mobile-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Responsive behavior */
+    @media (max-width: 720px) {
+      .topbar { display: none; }      /* hide desktop nav */
+      .top-right { display: none; }   /* hide desktop buttons */
+      .menu-btn { display: inline-block; }  /* show hamburger */
+    }
+
+    /* Make sections not hide behind fixed UI on mobile */
+    @media (max-width: 720px) {
+      .hero-spacer { height: 90px; }
+    }
+
+    /* Ensure button text is white everywhere (esp. mobile menu) */
+    .top-btn,
+    .top-btn:visited,
+    .top-btn:active {
+      color: #ffffff !important;
+    }
+
+
   </style>
 </head>
 
 <body>
 
-  <!-- Top Nav -->
-  <div class="topbar">
-    <a class="nav-link" href="#manifesto">Manifesto</a>
-    <a class="nav-link" href="#atlas">Atlas</a>
-    <a class="nav-link" href="#projects">Projects</a>
-    <a class="nav-link" href="#team">Team</a>
-  </div>
+  <!-- Mobile Hamburger -->
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+  ☰ Menu
+</button>
 
-  <!-- Top-right Buttons -->
-  <div class="top-right">
-    <a class="top-btn secondary" href="#contribute">Contribute</a>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#manifesto" onclick="closeMenu()">Manifesto</a>
+  <a href="#atlas" onclick="closeMenu()">Atlas</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#team" onclick="closeMenu()">Team</a>
+  <a href="#contribute" onclick="closeMenu()">Contribute</a>
+
+  <div class="mobile-actions">
     <a class="top-btn" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Discord →</a>
     <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">GitHub →</a>
   </div>
+</div>
+
+<!-- Desktop Top Nav -->
+<div class="topbar">
+  <a class="nav-link" href="#manifesto">Manifesto</a>
+  <a class="nav-link" href="#atlas">Atlas</a>
+  <a class="nav-link" href="#projects">Projects</a>
+  <a class="nav-link" href="#team">Team</a>
+</div>
+
+<!-- Desktop Top-right Buttons -->
+<div class="top-right">
+  <a class="top-btn secondary" href="#contribute">Contribute</a>
+  <a class="top-btn" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Discord →</a>
+  <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">GitHub →</a>
+</div>
+
 
   <!-- HERO -->
   <div class="hero-spacer"></div>
@@ -339,8 +455,7 @@
     </p>
 
     <p>
-      <b>OSH</b> (pronounced “Oh-Ss”) — the Open Source Humanoid.
-      An open, modular humanoid robotics project developed within HBRN, focused on low-cost,
+      <b>OSH</b> (pronounced “Oh-Ss”) — An open, modular humanoid robotics project maintained within HBRN, focused on low-cost,
       reproducible hardware, shared interfaces, and community-driven iteration.
       The name draws inspiration from <i>Oshi Shinobu</i> or simply put in <a href="https://en.wikipedia.org/wiki/Brazilian_jiu-jitsu" target="_blank" rel="noopener">Brazilian Jiu-Jitsu</a> “Oss”.
       <br>
@@ -353,8 +468,6 @@
       and shared infrastructure.
       <span class="muted"><a href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">(Join Discord →)</a></span>
     </p>
-  </div>
-
   </div>
 
   <!-- TEAM -->
@@ -383,6 +496,32 @@
       <a class="top-btn" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Join Discord →</a>
     </p>
   </div>
+
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  function closeMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = "none";
+  }
+
+  // Close menu if you tap outside it
+  document.addEventListener("click", function(e) {
+    const menu = document.getElementById("mobileMenu");
+    const btn = document.querySelector(".menu-btn");
+    if (!menu || !btn) return;
+
+    const clickedInsideMenu = menu.contains(e.target);
+    const clickedButton = btn.contains(e.target);
+
+    if (!clickedInsideMenu && !clickedButton) {
+      menu.style.display = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
