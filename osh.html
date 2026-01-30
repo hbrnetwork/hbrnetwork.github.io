@@ -12,74 +12,42 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
   <style>
-    body, h1, h2, h3, a, button, li, input, select {
-      font-family: "Raleway", sans-serif;
-    }
-
-    body, html {
-      height: 100%;
-      background-color: #f3ebd8;
-      margin: 0;
-      color: #333;
-    }
+    body, h1, h2, h3, a, button, li, input, select { font-family: "Raleway", sans-serif; }
+    body, html { height: 100%; background-color: #f3ebd8; margin: 0; color: #333; }
 
     /* Top nav bar (desktop) */
     .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      position: fixed; top: 0; left: 0; width: 100%;
       padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
+      display: flex; align-items: center; justify-content: center; gap: 18px;
       z-index: 9999;
       background: rgba(243, 235, 216, 0.85);
       backdrop-filter: blur(6px);
       pointer-events: auto;
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-
     .nav-link {
-      font-size: 16px;
-      font-weight: 900;
-      color: #333;
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 8px;
+      font-size: 16px; font-weight: 900; color: #333;
+      text-decoration: none; padding: 8px 10px; border-radius: 8px;
     }
-
     .nav-link:hover { background: rgba(0,0,0,0.06); }
 
     /* Top-right buttons group (desktop) */
     .top-right {
-      position: fixed;
-      top: 14px;
-      right: 16px;
-      z-index: 10000;
-      display: flex;
-      gap: 10px;
-      pointer-events: auto;
+      position: fixed; top: 14px; right: 16px; z-index: 10000;
+      display: flex; gap: 10px; pointer-events: auto;
     }
-
     .top-btn {
-      background: #333;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 900;
+      background: #333; color: white;
+      padding: 10px 14px; border-radius: 10px;
+      font-size: 14px; text-decoration: none; font-weight: 900;
       border: 1px solid rgba(255,255,255,0.15);
       display: inline-block;
     }
-
     .top-btn:hover { background: #555; }
 
     .top-btn.secondary {
-      background: transparent;
-      color: #333;
+      background: transparent; color: #333;
       border: 1px solid rgba(0,0,0,0.18);
     }
     .top-btn.secondary:hover { background: rgba(0,0,0,0.06); }
@@ -90,10 +58,7 @@
 
     /* Mobile hamburger */
     .menu-btn {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 10002;
+      position: fixed; top: 16px; left: 16px; z-index: 10002;
       display: none;
       background: transparent;
       border: 1px solid rgba(0,0,0,0.18);
@@ -109,11 +74,7 @@
 
     /* Mobile dropdown menu */
     .mobile-menu {
-      position: fixed;
-      top: 62px;
-      left: 16px;
-      right: 16px;
-      z-index: 10003;
+      position: fixed; top: 62px; left: 16px; right: 16px; z-index: 10003;
       background: rgba(243, 235, 216, 0.95);
       border: 1px solid rgba(0,0,0,0.10);
       border-radius: 14px;
@@ -121,7 +82,6 @@
       display: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
-
     .mobile-menu a {
       display: block;
       padding: 12px 12px;
@@ -131,7 +91,6 @@
       font-weight: 900;
     }
     .mobile-menu a:hover { background: rgba(0,0,0,0.06); }
-
     .mobile-menu .mobile-actions {
       display: grid;
       grid-template-columns: 1fr;
@@ -144,50 +103,15 @@
     /* Hero */
     .hero-spacer { height: 70px; }
     .center-container { height: 100%; pointer-events: none; }
-
-    .hero-title {
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      margin: 0 0 10px 0;
-      color: #1f1f1f;
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 0;
-      max-width: 880px;
-      opacity: 0.92;
-    }
-
+    .hero-title { font-weight: 900; letter-spacing: 0.2px; margin: 0 0 10px 0; color: #1f1f1f; }
+    .hero-subtitle { font-size: 18px; line-height: 1.6; margin: 0; max-width: 880px; opacity: 0.92; }
     .muted { opacity: 0.78; font-size: 16px; }
 
     /* Sections */
-    .section {
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 90px 18px 70px 18px;
-    }
-
-    .section h2 {
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      margin: 0 0 12px 0;
-      color: #1f1f1f;
-    }
-
-    .section h3 {
-      font-weight: 900;
-      margin: 26px 0 10px 0;
-      color: #1f1f1f;
-    }
-
-    .section p, .section li {
-      color: #333;
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 0 0 14px 0;
-    }
+    .section { max-width: 1020px; margin: 0 auto; padding: 90px 18px 70px 18px; }
+    .section h2 { font-weight: 900; letter-spacing: 0.2px; margin: 0 0 12px 0; color: #1f1f1f; }
+    .section h3 { font-weight: 900; margin: 26px 0 10px 0; color: #1f1f1f; }
+    .section p, .section li { color: #333; font-size: 18px; line-height: 1.6; margin: 0 0 14px 0; }
 
     /* Cards */
     .card {
@@ -198,21 +122,8 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.04);
       margin-top: 16px;
     }
-
-    .card-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 12px;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    .card-title {
-      font-size: 22px;
-      font-weight: 900;
-      margin: 0;
-      color: #1f1f1f;
-    }
+    .card-top { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: baseline; justify-content: space-between; }
+    .card-title { font-size: 22px; font-weight: 900; margin: 0; color: #1f1f1f; }
 
     .pill {
       display: inline-block;
@@ -234,19 +145,8 @@
       background: rgba(0,0,0,0.03);
       border-radius: 12px;
     }
-
-    .quote p {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .quote .attribution {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 900;
-      opacity: 0.75;
-    }
+    .quote p { margin: 0; font-size: 18px; line-height: 1.6; }
+    .quote .attribution { margin-top: 8px; font-size: 14px; font-weight: 900; opacity: 0.75; }
 
     /* Controls */
     .controls {
@@ -255,14 +155,12 @@
       gap: 10px;
       margin-top: 12px;
     }
-
     .control {
       border: 1px solid rgba(0,0,0,0.10);
       border-radius: 12px;
       background: rgba(255,255,255,0.20);
       padding: 10px 10px;
     }
-
     .control label {
       display: block;
       font-size: 12px;
@@ -271,7 +169,6 @@
       opacity: 0.85;
       margin-bottom: 6px;
     }
-
     .control input, .control select {
       width: 100%;
       font-size: 15px;
@@ -281,7 +178,6 @@
       background: rgba(243, 235, 216, 0.55);
       outline: none;
     }
-
     .control input:focus, .control select:focus {
       border-color: rgba(0,0,0,0.30);
       background: rgba(243, 235, 216, 0.75);
@@ -295,7 +191,6 @@
       overflow: hidden;
       background: rgba(255,255,255,0.20);
     }
-
     table { width: 100%; border-collapse: collapse; }
     th, td {
       padding: 12px 12px;
@@ -304,12 +199,7 @@
       font-size: 15px;
       vertical-align: top;
     }
-
-    th {
-      font-weight: 900;
-      background: rgba(243, 235, 216, 0.55);
-    }
-
+    th { font-weight: 900; background: rgba(243, 235, 216, 0.55); }
     tr:hover td { background: rgba(0,0,0,0.03); }
 
     .tag {
@@ -324,7 +214,6 @@
       margin-bottom: 6px;
       opacity: 0.9;
     }
-
     .small { font-size: 13px; opacity: 0.8; }
     .link { color: #333; font-weight: 900; text-decoration: underline; }
     .link:hover { opacity: 0.85; }
@@ -485,24 +374,32 @@
           <tbody>
             <!-- Replace/extend these rows -->
             <tr data-level="beginner" data-focus="fullstack">
-              <td><a class="link" href="#" target="_blank" rel="noopener">Metal2Humanoid</a><div class="small">HBRN</div></td>
-              <td>Beginner → Int.</td>
+              <td><a class="link" href="m2h.html" target="_blank" rel="noopener">Metal2Humanoid</a><div class="small">HBRN</div></td>
+              <td>Beginner</td>
               <td>Full-stack</td>
               <td><span class="tag">curriculum</span><span class="tag">projects</span></td>
               <td>Nan2Tetris-style build path.</td>
             </tr>
 
+            <tr data-level="intermediate" data-focus="fullstack">
+              <td><a class="link" href="https://mitsoul.org/courses/" target="_blank" rel="noopener">MIT SOUL Curriculum</a><div class="small">MIT SOUL</div></td>
+              <td>Intermediate</td>
+              <td>Full-stack Robotics</td>
+              <td><span class="tag">curriculum</span><span class="tag">guides</span><span class="tag">demos</span></td>
+              <td>Structured open-learning paths (MIT course materials). <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
             <tr data-level="beginner" data-focus="ros">
-              <td><a class="link" href="#" target="_blank" rel="noopener">ROS 2 Tutorials</a></td>
+              <td><a class="link" href="https://docs.ros.org/en/rolling/Tutorials.html" target="_blank" rel="noopener">ROS 2 Tutorials</a></td>
               <td>Beginner</td>
               <td>ROS / Systems</td>
               <td><span class="tag">docs</span><span class="tag">hands-on</span></td>
               <td>Core concepts + packages.</td>
             </tr>
 
-            <tr data-level="intermediate" data-focus="controls">
-              <td><a class="link" href="#" target="_blank" rel="noopener">Underactuated Robotics</a><div class="small">Russ Tedrake</div></td>
-              <td>Intermediate</td>
+            <tr data-level="advanced" data-focus="controls">
+              <td><a class="link" href="https://underactuated.mit.edu/" target="_blank" rel="noopener">Underactuated Robotics</a><div class="small">Russ Tedrake</div></td>
+              <td>Advanced</td>
               <td>Controls</td>
               <td><span class="tag">book</span><span class="tag">lectures</span></td>
               <td>Gold standard for dynamics/control.</td>
@@ -549,6 +446,7 @@
             <option value="mobile">Mobile manipulator</option>
             <option value="hands">Hands / End-effectors</option>
             <option value="actuators">Actuators</option>
+            <option value="arm">Manipulator Arm</option>
           </select>
         </div>
 
@@ -556,9 +454,11 @@
           <label for="bodyLicense">License</label>
           <select id="bodyLicense">
             <option value="all">All</option>
+            <option value="apache">Apache-2.0</option>
             <option value="cern">CERN-OHL</option>
             <option value="cc">CC BY-SA</option>
             <option value="gpl">GPL</option>
+            <option value="proprietary">Proprietary</option>
             <option value="mixed">Mixed / Other</option>
           </select>
         </div>
@@ -577,36 +477,75 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Replace/extend these rows -->
-            <tr data-type="humanoid" data-license="mixed">
-              <td><a class="link" href="#" target="_blank" rel="noopener">Berkeley Humanoid Lite</a></td>
-              <td>Humanoid</td>
-              <td>&lt; $5k</td>
-              <td><span class="tag">repo</span><span class="tag">CAD</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
-              <td><span class="tag">locomotion</span><span class="tag">humanoid</span></td>
-              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
-            </tr>
+            <!-- Updated/extended rows -->
 
-            <tr data-type="bimanual" data-license="mixed">
-              <td><a class="link" href="#" target="_blank" rel="noopener">XLe</a></td>
+            <tr data-type="bimanual" data-license="apache">
+              <td><a class="link" href="https://xlerobot.readthedocs.io/" target="_blank" rel="noopener">XLe Robot</a><div class="small">Vector-Wangel</div></td>
               <td>Bi-manual</td>
               <td>&lt; $1k</td>
-              <td><span class="tag">repo</span><span class="tag">docs</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
-              <td><span class="tag">teleop</span><span class="tag">mobile</span><span class="tag">manipulation</span></td>
+              <td>
+                <span class="tag">docs</span><span class="tag">repo</span><span class="tag">BOM</span>
+                <div class="small">License: Apache-2.0</div>
+              </td>
+              <td><span class="tag">teleoperation</span><span class="tag">manipulation</span><span class="tag">mobile</span></td>
               <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
             </tr>
 
-            <tr data-type="mobile" data-license="mixed">
-              <td><a class="link" href="#" target="_blank" rel="noopener">LeKiwi</a></td>
+            <tr data-type="mobile" data-license="apache">
+              <td><a class="link" href="https://github.com/SIGRobotics-UIUC/LeKiwi" target="_blank" rel="noopener">LeKiwi</a><div class="small">SIGRobotics (UIUC)</div></td>
               <td>Mobile</td>
-              <td>~ $1k</td>
-              <td><span class="tag">repo</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
+              <td>~ $500</td>
+              <td>
+                <span class="tag">repo</span><span class="tag">BOM</span><span class="tag">CAD</span>
+                <div class="small">License: Apache-2.0</div>
+              </td>
               <td><span class="tag">navigation</span><span class="tag">manipulation</span></td>
               <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
             </tr>
+
+            <tr data-type="humanoid" data-license="mixed">
+              <td><a class="link" href="https://lite.berkeley-humanoid.org" target="_blank" rel="noopener">Berkeley Humanoid Lite</a><div class="small">HybridRobotics</div></td>
+              <td>Humanoid</td>
+              <td>&lt; $5k</td>
+              <td>
+                <span class="tag">site</span><span class="tag">CAD</span><span class="tag">BOM</span><span class="tag">repo</span>
+                <div class="small">Open-source design (license: verify)</div>
+              </td>
+              <td><span class="tag">locomotion</span><span class="tag">manipulation</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+
+            <tr data-type="humanoid" data-license="proprietary">
+              <td><a class="link" href="https://www.unitree.com/g1" target="_blank" rel="noopener">Unitree G1</a><div class="small">Unitree</div></td>
+              <td>Humanoid</td>
+              <td>$16k–$25k</td>
+              <td>
+                <span class="tag">product</span><span class="tag">docs</span>
+                <div class="small">License: proprietary</div>
+              </td>
+              <td><span class="tag">full-body</span><span class="tag">motion</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+
+            <tr data-type="arm" data-license="apache">
+              <td><a class="link" href="https://github.com/enactic/openarm" target="_blank" rel="noopener">OpenArm (Enactic)</a><div class="small">7-DOF Arm</div></td>
+              <td>Manipulator</td>
+              <td>TBD</td>
+              <td>
+                <span class="tag">repo</span><span class="tag">CAD</span><span class="tag">ROS2</span>
+                <div class="small">License: Apache-2.0</div>
+              </td>
+              <td><span class="tag">manipulation</span><span class="tag">ROS-compatible</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+
           </tbody>
         </table>
       </div>
+
+      <p class="muted" style="margin-top:12px;">
+        Costs are approximate. “UMOJA: TBD” = pending review/certification.
+      </p>
     </div>
   </div>
 
@@ -644,6 +583,7 @@
             <option value="forum">Forum</option>
             <option value="meetup">Meetup</option>
             <option value="github">GitHub org</option>
+            <option value="org">Org / Site</option>
           </select>
         </div>
 
@@ -655,6 +595,7 @@
             <option value="humanoid">Humanoid</option>
             <option value="learning">Learning / Datasets</option>
             <option value="hardware">Hardware</option>
+            <option value="diy">DIY / Hobby</option>
           </select>
         </div>
       </div>
@@ -671,30 +612,95 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Replace/extend these rows -->
+            <!-- Updated/extended rows -->
             <tr data-type="discord" data-scope="general">
               <td><b>HBRN</b></td>
               <td>Discord</td>
               <td>General / Open Robotics</td>
               <td><a class="link" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Join →</a></td>
-              <td>Meetups, standards, builds.</td>
+              <td>Meetups, standards, builds. <span class="tag">UMOJA: TBD</span></td>
             </tr>
 
             <tr data-type="discord" data-scope="learning">
-              <td><b>LeRobot</b></td>
+              <td><b>LeRobot (Hugging Face)</b></td>
               <td>Discord</td>
               <td>Learning / Datasets</td>
-              <td><a class="link" href="#" target="_blank" rel="noopener">Join →</a></td>
-              <td>Datasets, teleop, imitation learning.</td>
+              <td><a class="link" href="https://discord.gg/q8Dzzpym3f" target="_blank" rel="noopener">Join →</a></td>
+              <td>Datasets, teleop, imitation learning. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="discord" data-scope="general">
+              <td><b>SIGRobotics (UIUC)</b></td>
+              <td>Discord</td>
+              <td>General / Low-Cost Robotics</td>
+              <td><a class="link" href="https://www.acm.illinois.edu/" target="_blank" rel="noopener">Info →</a></td>
+              <td>ACM@UIUC SIG; robotics projects + community. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="forum" data-scope="diy">
+              <td><b>HBRC (HomeBrew Robotics Club)</b></td>
+              <td>Forum + Site</td>
+              <td>General / DIY Robotics</td>
+              <td><a class="link" href="https://www.hbrobotics.org/" target="_blank" rel="noopener">Website →</a></td>
+              <td>Long-running Bay Area homebrew club. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="meetup" data-scope="diy">
+              <td><b>DPRG (Dallas Personal Robotics Group)</b></td>
+              <td>Meetup / Website</td>
+              <td>General Hobby Robotics</td>
+              <td><a class="link" href="https://www.dprg.org/" target="_blank" rel="noopener">Website →</a></td>
+              <td>One of the oldest hobby robotics groups. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="meetup" data-scope="diy">
+              <td><b>HRG (Houston Robotics Group)</b></td>
+              <td>Meetup</td>
+              <td>General Hobby Robotics</td>
+              <td><a class="link" href="https://www.meetup.com/houstonroboticsgroup/" target="_blank" rel="noopener">Meetup →</a></td>
+              <td>Weekly meetings + project help. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="org" data-scope="hardware">
+              <td><b>Open Source Ecology</b></td>
+              <td>Mailing List / Site</td>
+              <td>Hardware / Tools</td>
+              <td><a class="link" href="https://www.opensourceecology.org/" target="_blank" rel="noopener">Website →</a></td>
+              <td>Open-hardware tools + “GVCS” ecosystem. <span class="tag">UMOJA: TBD</span></td>
             </tr>
 
             <tr data-type="discord" data-scope="humanoid">
-              <td><b>Berkeley Open Humanoid</b></td>
+              <td><b>KBot / K-Scale Labs</b></td>
+              <td>Discord</td>
+              <td>Humanoid / Hardware Startups</td>
+              <td><a class="link" href="https://discord.com/invite/pVwubQT9Sg" target="_blank" rel="noopener">Join →</a></td>
+              <td>K-Bot open humanoid initiative. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="discord" data-scope="humanoid">
+              <td><b>Berkeley Humanoid Group</b></td>
               <td>Discord</td>
               <td>Humanoid</td>
-              <td><a class="link" href="#" target="_blank" rel="noopener">Join →</a></td>
-              <td>Builders + open hardware efforts.</td>
+              <td><a class="link" href="https://berkeley-humanoid.com/" target="_blank" rel="noopener">Info →</a></td>
+              <td>Berkeley humanoid research platform + community. <span class="tag">UMOJA: TBD</span></td>
             </tr>
+
+            <tr data-type="forum" data-scope="learning">
+              <td><b>Robot Learning Collective</b></td>
+              <td>Forum + Site</td>
+              <td>Learning / Imitation / Autonomy</td>
+              <td><a class="link" href="https://robot-learning-collective.github.io/" target="_blank" rel="noopener">Website →</a></td>
+              <td>Research community + resources. <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
+            <tr data-type="org" data-scope="humanoid">
+              <td><b>Menlo Research</b></td>
+              <td>Org / Site</td>
+              <td>Humanoid Research</td>
+              <td><a class="link" href="https://menlo.ai/" target="_blank" rel="noopener">Website →</a></td>
+              <td>Open R&amp;D lab “building the brain for robots.” <span class="tag">UMOJA: TBD</span></td>
+            </tr>
+
           </tbody>
         </table>
       </div>
