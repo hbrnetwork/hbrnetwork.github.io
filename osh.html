@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OSH Atlas — Mind, Body, Soul</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <style>
+    body, h1, h2, h3, a, button, li, input, select {
+      font-family: "Raleway", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: #f3ebd8;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Top nav bar (desktop) */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 9999;
+      background: rgba(243, 235, 216, 0.85);
+      backdrop-filter: blur(6px);
+      pointer-events: auto;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 900;
+      color: #333;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover { background: rgba(0,0,0,0.06); }
+
+    /* Top-right buttons group (desktop) */
+    .top-right {
+      position: fixed;
+      top: 14px;
+      right: 16px;
+      z-index: 10000;
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .top-btn {
+      background: #333;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: inline-block;
+    }
+
+    .top-btn:hover { background: #555; }
+
+    .top-btn.secondary {
+      background: transparent;
+      color: #333;
+      border: 1px solid rgba(0,0,0,0.18);
+    }
+    .top-btn.secondary:hover { background: rgba(0,0,0,0.06); }
+
+    /* Make sure button text stays consistent */
+    .top-btn, .top-btn:visited, .top-btn:active { color: #ffffff !important; }
+    .top-btn.secondary, .top-btn.secondary:visited, .top-btn.secondary:active { color: #333 !important; }
+
+    /* Mobile hamburger */
+    .menu-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10002;
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 900;
+      color: #333;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      background: rgba(243, 235, 216, 0.7);
+    }
+    .menu-btn:active { transform: translateY(1px); }
+
+    /* Mobile dropdown menu */
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      left: 16px;
+      right: 16px;
+      z-index: 10003;
+      background: rgba(243, 235, 216, 0.95);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 900;
+    }
+    .mobile-menu a:hover { background: rgba(0,0,0,0.06); }
+
+    .mobile-menu .mobile-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Hero */
+    .hero-spacer { height: 70px; }
+    .center-container { height: 100%; pointer-events: none; }
+
+    .hero-title {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 880px;
+      opacity: 0.92;
+    }
+
+    .muted { opacity: 0.78; font-size: 16px; }
+
+    /* Sections */
+    .section {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 90px 18px 70px 18px;
+    }
+
+    .section h2 {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 12px 0;
+      color: #1f1f1f;
+    }
+
+    .section h3 {
+      font-weight: 900;
+      margin: 26px 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .section p, .section li {
+      color: #333;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 14px 0;
+    }
+
+    /* Cards */
+    .card {
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 16px;
+      padding: 18px 18px 14px 18px;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-top: 16px;
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 0;
+      color: #1f1f1f;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(243, 235, 216, 0.6);
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    /* Quote */
+    .quote {
+      margin-top: 12px;
+      padding: 14px 14px 12px 14px;
+      border-left: 5px solid rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.03);
+      border-radius: 12px;
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .quote .attribution {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      opacity: 0.75;
+    }
+
+    /* Controls */
+    .controls {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .control {
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.20);
+      padding: 10px 10px;
+    }
+
+    .control label {
+      display: block;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      opacity: 0.85;
+      margin-bottom: 6px;
+    }
+
+    .control input, .control select {
+      width: 100%;
+      font-size: 15px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.14);
+      background: rgba(243, 235, 216, 0.55);
+      outline: none;
+    }
+
+    .control input:focus, .control select:focus {
+      border-color: rgba(0,0,0,0.30);
+      background: rgba(243, 235, 216, 0.75);
+    }
+
+    /* Table */
+    .table-wrap {
+      margin-top: 12px;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.20);
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td {
+      padding: 12px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      font-size: 15px;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 900;
+      background: rgba(243, 235, 216, 0.55);
+    }
+
+    tr:hover td { background: rgba(0,0,0,0.03); }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.25);
+      font-size: 12px;
+      font-weight: 900;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .small { font-size: 13px; opacity: 0.8; }
+    .link { color: #333; font-weight: 900; text-decoration: underline; }
+    .link:hover { opacity: 0.85; }
+
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .topbar { display: none; }
+      .top-right { display: none; }
+      .menu-btn { display: inline-block; }
+      .hero-spacer { height: 90px; }
+      .controls { grid-template-columns: 1fr; }
+      th, td { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile Hamburger -->
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰ Menu</button>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#mind" onclick="closeMenu()">Mind</a>
+    <a href="#body" onclick="closeMenu()">Body</a>
+    <a href="#soul" onclick="closeMenu()">Soul</a>
+    <a href="#contribute" onclick="closeMenu()">Contribute</a>
+
+    <div class="mobile-actions">
+      <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR →</a>
+      <a class="top-btn secondary" href="#contribute" onclick="closeMenu()">How to Contribute</a>
+    </div>
+  </div>
+
+  <!-- Desktop Top Nav -->
+  <div class="topbar">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#mind">Mind</a>
+    <a class="nav-link" href="#body">Body</a>
+    <a class="nav-link" href="#soul">Soul</a>
+    <a class="nav-link" href="#contribute">Contribute</a>
+  </div>
+
+  <!-- Desktop Top-right Buttons -->
+  <div class="top-right">
+    <a class="top-btn secondary" href="#mind">Start Here</a>
+    <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR →</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-spacer"></div>
+
+  <div class="w3-display-container center-container" style="min-height: 70vh;">
+    <div class="w3-display-middle w3-center" style="pointer-events: auto; padding: 0 16px;">
+      <h1 class="hero-title">OSH Atlas</h1>
+      <p class="hero-subtitle">
+        A curated, searchable map of the open humanoid ecosystem — organized as <b>Mind</b> (curriculum),
+        <b>Body</b> (projects you can build), and <b>Soul</b> (communities that keep it alive).
+      </p>
+      <div class="muted" style="margin-top:10px;">
+        If you want to add or edit something, submit a PR to <b>hbrnetwork.github.io</b>.
+      </div>
+      <div style="margin-top:16px;">
+        <a class="top-btn secondary" href="#mind">Browse Mind ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <h2>About</h2>
+    <p>
+      OSH Atlas is a “Wikipedia + benchmarks” vibe for open robotics — but focused on the stuff builders actually need:
+      learning resources, buildable projects, and living communities.
+    </p>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 class="card-title">Principles</h3>
+        <div>
+          <span class="pill">Open</span>
+          <span class="pill">Reproducible</span>
+          <span class="pill">Builder-first</span>
+        </div>
+      </div>
+      <ul style="margin: 12px 0 0 18px;">
+        <li><b>Mind:</b> teach yourself quickly (good curriculum beats random YouTube spirals).</li>
+        <li><b>Body:</b> build and iterate (CAD, BOM, docs, cost, maturity).</li>
+        <li><b>Soul:</b> coordinate (Discords, meetups, standards, culture).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MIND -->
+  <div id="mind" class="section">
+    <h2>Mind — Curriculum</h2>
+    <p class="muted">Open learning paths, courses, build guides, and “from-zero-to-robot” curricula.</p>
+
+    <div class="quote">
+      <p>“Education is not the filling of a pail, but the lighting of a fire.”</p>
+      <div class="attribution">— W. B. Yeats</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 class="card-title" style="margin:0;">Search & Filter</h3>
+        <div>
+          <span class="pill">Level</span>
+          <span class="pill">Focus</span>
+          <span class="pill">Format</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="mindQ">Search</label>
+          <input id="mindQ" type="text" placeholder="e.g., 'controls', 'SLAM', 'manipulation', 'ROS2'">
+        </div>
+
+        <div class="control">
+          <label for="mindLevel">Level</label>
+          <select id="mindLevel">
+            <option value="all">All</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="mindFocus">Focus</label>
+          <select id="mindFocus">
+            <option value="all">All</option>
+            <option value="hardware">Hardware</option>
+            <option value="controls">Controls</option>
+            <option value="ros">ROS / Systems</option>
+            <option value="ml">Learning</option>
+            <option value="fullstack">Full-stack Robotics</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="mindTable">
+          <thead>
+            <tr>
+              <th style="width: 26%;">Resource</th>
+              <th style="width: 14%;">Level</th>
+              <th style="width: 18%;">Focus</th>
+              <th style="width: 22%;">Format</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Replace/extend these rows -->
+            <tr data-level="beginner" data-focus="fullstack">
+              <td><a class="link" href="#" target="_blank" rel="noopener">Metal2Humanoid</a><div class="small">HBRN</div></td>
+              <td>Beginner → Int.</td>
+              <td>Full-stack</td>
+              <td><span class="tag">curriculum</span><span class="tag">projects</span></td>
+              <td>Nan2Tetris-style build path.</td>
+            </tr>
+
+            <tr data-level="beginner" data-focus="ros">
+              <td><a class="link" href="#" target="_blank" rel="noopener">ROS 2 Tutorials</a></td>
+              <td>Beginner</td>
+              <td>ROS / Systems</td>
+              <td><span class="tag">docs</span><span class="tag">hands-on</span></td>
+              <td>Core concepts + packages.</td>
+            </tr>
+
+            <tr data-level="intermediate" data-focus="controls">
+              <td><a class="link" href="#" target="_blank" rel="noopener">Underactuated Robotics</a><div class="small">Russ Tedrake</div></td>
+              <td>Intermediate</td>
+              <td>Controls</td>
+              <td><span class="tag">book</span><span class="tag">lectures</span></td>
+              <td>Gold standard for dynamics/control.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div id="body" class="section">
+    <h2>Body — Projects</h2>
+    <p class="muted">Open-source robots and subsystems you can actually build, mod, and replicate.</p>
+
+    <div class="quote">
+      <p>“What I cannot create, I do not understand.”</p>
+      <div class="attribution">— Richard Feynman</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 class="card-title" style="margin:0;">Search & Filter</h3>
+        <div>
+          <span class="pill">Type</span>
+          <span class="pill">License</span>
+          <span class="pill">Maturity</span>
+          <span class="pill">UMOJA</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="bodyQ">Search</label>
+          <input id="bodyQ" type="text" placeholder="e.g., 'humanoid', 'hands', 'actuator', 'teleop'">
+        </div>
+
+        <div class="control">
+          <label for="bodyType">Type</label>
+          <select id="bodyType">
+            <option value="all">All</option>
+            <option value="humanoid">Humanoid</option>
+            <option value="bimanual">Bi-manual</option>
+            <option value="mobile">Mobile manipulator</option>
+            <option value="hands">Hands / End-effectors</option>
+            <option value="actuators">Actuators</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="bodyLicense">License</label>
+          <select id="bodyLicense">
+            <option value="all">All</option>
+            <option value="cern">CERN-OHL</option>
+            <option value="cc">CC BY-SA</option>
+            <option value="gpl">GPL</option>
+            <option value="mixed">Mixed / Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="bodyTable">
+          <thead>
+            <tr>
+              <th style="width: 16%;">Project</th>
+              <th style="width: 13%;">Type</th>
+              <th style="width: 11%;">Cost</th>
+              <th style="width: 22%;">Open / Docs</th>
+              <th style="width: 26%;">Capabilities</th>
+              <th style="width: 12%;"><a class="link" href="umoja.html">UMOJA Certified</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Replace/extend these rows -->
+            <tr data-type="humanoid" data-license="mixed">
+              <td><a class="link" href="#" target="_blank" rel="noopener">Berkeley Humanoid Lite</a></td>
+              <td>Humanoid</td>
+              <td>&lt; $5k</td>
+              <td><span class="tag">repo</span><span class="tag">CAD</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
+              <td><span class="tag">locomotion</span><span class="tag">humanoid</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+
+            <tr data-type="bimanual" data-license="mixed">
+              <td><a class="link" href="#" target="_blank" rel="noopener">XLe</a></td>
+              <td>Bi-manual</td>
+              <td>&lt; $1k</td>
+              <td><span class="tag">repo</span><span class="tag">docs</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
+              <td><span class="tag">teleop</span><span class="tag">mobile</span><span class="tag">manipulation</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+
+            <tr data-type="mobile" data-license="mixed">
+              <td><a class="link" href="#" target="_blank" rel="noopener">LeKiwi</a></td>
+              <td>Mobile</td>
+              <td>~ $1k</td>
+              <td><span class="tag">repo</span><span class="tag">BOM</span><div class="small">License: verify</div></td>
+              <td><span class="tag">navigation</span><span class="tag">manipulation</span></td>
+              <td><a class="link" href="umoja.html"><span class="tag">TBD</span></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOUL -->
+  <div id="soul" class="section">
+    <h2>Soul — Communities</h2>
+    <p class="muted">Discords, forums, meetups, and builder cultures that make the ecosystem actually move.</p>
+
+    <div class="quote">
+      <p>“Alone we can do so little; together we can do so much.”</p>
+      <div class="attribution">— Helen Keller</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 class="card-title" style="margin:0;">Search & Filter</h3>
+        <div>
+          <span class="pill">Discord</span>
+          <span class="pill">Meetups</span>
+          <span class="pill">Scope</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="soulQ">Search</label>
+          <input id="soulQ" type="text" placeholder="e.g., 'teleop', 'humanoid', 'datasets', 'boston'">
+        </div>
+
+        <div class="control">
+          <label for="soulType">Type</label>
+          <select id="soulType">
+            <option value="all">All</option>
+            <option value="discord">Discord</option>
+            <option value="forum">Forum</option>
+            <option value="meetup">Meetup</option>
+            <option value="github">GitHub org</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="soulScope">Scope</label>
+          <select id="soulScope">
+            <option value="all">All</option>
+            <option value="general">General Robotics</option>
+            <option value="humanoid">Humanoid</option>
+            <option value="learning">Learning / Datasets</option>
+            <option value="hardware">Hardware</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="soulTable">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Community</th>
+              <th style="width: 14%;">Type</th>
+              <th style="width: 22%;">Scope</th>
+              <th style="width: 22%;">Link</th>
+              <th style="width: 22%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Replace/extend these rows -->
+            <tr data-type="discord" data-scope="general">
+              <td><b>HBRN</b></td>
+              <td>Discord</td>
+              <td>General / Open Robotics</td>
+              <td><a class="link" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Join →</a></td>
+              <td>Meetups, standards, builds.</td>
+            </tr>
+
+            <tr data-type="discord" data-scope="learning">
+              <td><b>LeRobot</b></td>
+              <td>Discord</td>
+              <td>Learning / Datasets</td>
+              <td><a class="link" href="#" target="_blank" rel="noopener">Join →</a></td>
+              <td>Datasets, teleop, imitation learning.</td>
+            </tr>
+
+            <tr data-type="discord" data-scope="humanoid">
+              <td><b>Berkeley Open Humanoid</b></td>
+              <td>Discord</td>
+              <td>Humanoid</td>
+              <td><a class="link" href="#" target="_blank" rel="noopener">Join →</a></td>
+              <td>Builders + open hardware efforts.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div id="contribute" class="section">
+    <h2>Contribute</h2>
+    <p>
+      To add a resource, project, or community: submit a PR with a new row in the relevant table.
+    </p>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 class="card-title">How to Add an Entry (PR-only)</h3>
+        <div>
+          <span class="pill">Fork</span>
+          <span class="pill">Edit</span>
+          <span class="pill">PR</span>
+        </div>
+      </div>
+
+      <ol style="margin: 12px 0 0 20px;">
+        <li>Fork the repo: <a class="link" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">hbrnetwork/hbrnetwork.github.io</a></li>
+        <li>Edit this page file (add a row to Mind / Body / Soul).</li>
+        <li>Submit a PR with your changes.</li>
+      </ol>
+
+      <p class="muted" style="margin-top:10px;">
+        Later we’ll move the tables into JSON/YAML for easier contributions — but PRs keep quality high.
+      </p>
+
+      <p style="margin-top:12px;">
+        <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR →</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = "none";
+    }
+
+    // Close menu if you tap outside it
+    document.addEventListener("click", function(e) {
+      const menu = document.getElementById("mobileMenu");
+      const btn = document.querySelector(".menu-btn");
+      if (!menu || !btn) return;
+
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedButton = btn.contains(e.target);
+
+      if (!clickedInsideMenu && !clickedButton) {
+        menu.style.display = "none";
+      }
+    });
+
+    // Generic filtering helper
+    function filterTable({ queryEl, selectEls, tableId, attrMap }) {
+      const qEl = document.getElementById(queryEl);
+      const selects = selectEls.map(id => document.getElementById(id));
+      const table = document.getElementById(tableId);
+      if (!qEl || !table) return;
+
+      function apply() {
+        const query = (qEl.value || "").toLowerCase().trim();
+        const values = selects.map(s => (s ? s.value : "all"));
+
+        const rows = table.querySelectorAll("tbody tr");
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+
+          let ok = (query === "" || text.includes(query));
+
+          // Check each select against row attributes
+          values.forEach((val, i) => {
+            const attr = attrMap[i];
+            if (!attr) return;
+            if (val === "all") return;
+            const rowVal = row.getAttribute(attr) || "all";
+            if (rowVal !== val) ok = false;
+          });
+
+          row.style.display = ok ? "" : "none";
+        });
+      }
+
+      qEl.addEventListener("input", apply);
+      selects.forEach(s => s && s.addEventListener("change", apply));
+      apply();
+    }
+
+    // Mind
+    filterTable({
+      queryEl: "mindQ",
+      selectEls: ["mindLevel", "mindFocus"],
+      tableId: "mindTable",
+      attrMap: ["data-level", "data-focus"]
+    });
+
+    // Body
+    filterTable({
+      queryEl: "bodyQ",
+      selectEls: ["bodyType", "bodyLicense"],
+      tableId: "bodyTable",
+      attrMap: ["data-type", "data-license"]
+    });
+
+    // Soul
+    filterTable({
+      queryEl: "soulQ",
+      selectEls: ["soulType", "soulScope"],
+      tableId: "soulTable",
+      attrMap: ["data-type", "data-scope"]
+    });
+  </script>
+
+</body>
+</html>

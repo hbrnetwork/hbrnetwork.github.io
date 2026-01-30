@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metal2Humanoid — A Nan2Tetris-style Robotics Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <style>
+    body, h1, h2, h3, a, button, li {
+      font-family: "Raleway", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: #f3ebd8;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Top nav bar (desktop) */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 9999;
+      background: rgba(243, 235, 216, 0.85);
+      backdrop-filter: blur(6px);
+      pointer-events: auto;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 900;
+      color: #333;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* Top-right buttons group (desktop) */
+    .top-right {
+      position: fixed;
+      top: 14px;
+      right: 16px;
+      z-index: 10000;
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .top-btn {
+      background: #333;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: inline-block;
+    }
+
+    .top-btn:hover {
+      background: #555;
+    }
+
+    .top-btn.secondary {
+      background: transparent;
+      color: #333;
+      border: 1px solid rgba(0,0,0,0.18);
+    }
+
+    .top-btn.secondary:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* Make sure button text stays white */
+    .top-btn, .top-btn:visited, .top-btn:active { color: #ffffff !important; }
+    .top-btn.secondary, .top-btn.secondary:visited, .top-btn.secondary:active { color: #333 !important; }
+
+    /* Mobile hamburger */
+    .menu-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10002;
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 900;
+      color: #333;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      background: rgba(243, 235, 216, 0.7);
+    }
+
+    .menu-btn:active { transform: translateY(1px); }
+
+    /* Mobile dropdown menu */
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      left: 16px;
+      right: 16px;
+      z-index: 10003;
+      background: rgba(243, 235, 216, 0.95);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 900;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    .mobile-menu .mobile-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Hero */
+    .hero-spacer { height: 70px; }
+    .center-container { height: 100%; pointer-events: none; }
+
+    .hero-title {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 760px;
+      opacity: 0.92;
+    }
+
+    .muted {
+      opacity: 0.78;
+      font-size: 16px;
+    }
+
+    /* Sections */
+    .section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 90px 18px 70px 18px;
+    }
+
+    .section h2 {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 12px 0;
+      color: #1f1f1f;
+    }
+
+    .section h3 {
+      font-weight: 900;
+      margin: 26px 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .section p, .section li {
+      color: #333;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 14px 0;
+    }
+
+    /* Book cards */
+    .book-card {
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 16px;
+      padding: 18px 18px 14px 18px;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-top: 16px;
+    }
+
+    .book-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .book-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 0;
+      color: #1f1f1f;
+    }
+
+    .book-meta {
+      font-size: 14px;
+      font-weight: 900;
+      opacity: 0.8;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(243, 235, 216, 0.6);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .quote {
+      margin-top: 12px;
+      padding: 14px 14px 12px 14px;
+      border-left: 5px solid rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.03);
+      border-radius: 12px;
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .quote .attribution {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      opacity: 0.75;
+    }
+
+    .outline {
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .outline-item {
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.18);
+      padding: 12px 12px 10px 12px;
+    }
+
+    .outline-item b {
+      font-weight: 900;
+    }
+
+    .outline-item .muted {
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+
+    /* Responsive behavior */
+    @media (max-width: 720px) {
+      .topbar { display: none; }
+      .top-right { display: none; }
+      .menu-btn { display: inline-block; }
+      .hero-spacer { height: 90px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile Hamburger -->
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰ Menu</button>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#books" onclick="closeMenu()">Books</a>
+    <a href="#book1" onclick="closeMenu()">Book I — Earth</a>
+    <a href="#book2" onclick="closeMenu()">Book II — Water</a>
+    <a href="#book3" onclick="closeMenu()">Book III — Fire</a>
+    <a href="#book4" onclick="closeMenu()">Book IV — Air</a>
+    <a href="#book5" onclick="closeMenu()">Book V — Void</a>
+
+    <div class="mobile-actions">
+      <a class="top-btn" href="#" target="_blank" rel="noopener">Syllabus →</a>
+      <a class="top-btn" href="#" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+  </div>
+
+  <!-- Desktop Top Nav -->
+  <div class="topbar">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#books">Books</a>
+    <a class="nav-link" href="#book1">Earth</a>
+    <a class="nav-link" href="#book2">Water</a>
+    <a class="nav-link" href="#book3">Fire</a>
+    <a class="nav-link" href="#book4">Air</a>
+    <a class="nav-link" href="#book5">Void</a>
+  </div>
+
+  <!-- Desktop Top-right Buttons -->
+  <div class="top-right">
+    <a class="top-btn secondary" href="#books">Start Here</a>
+    <a class="top-btn" href="#" target="_blank" rel="noopener">Syllabus →</a>
+    <a class="top-btn" href="#" target="_blank" rel="noopener">GitHub →</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-spacer"></div>
+
+  <div class="w3-display-container center-container" style="min-height: 70vh;">
+    <div class="w3-display-middle w3-center" style="pointer-events: auto; padding: 0 16px;">
+      <h1 class="hero-title">Metal2Humanoid</h1>
+      <p class="hero-subtitle">
+        A Nan2Tetris-style path through robotics: from materials → actuators → motion → behavior → learning → human meaning.
+      </p>
+      <div class="muted" style="margin-top:10px;">
+        Five books. Five elements. Each book opens with an outline + an epigraph.
+      </div>
+      <div style="margin-top:16px;">
+        <a class="top-btn secondary" href="#books">Browse the Books ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <h2>About</h2>
+    <p>
+      This course is structured as <b>five books</b> inspired by “elements” and engineering fundamentals.
+      Each book begins with a quote, a learning promise, and a concrete outline of projects.
+    </p>
+    <p class="muted">
+      (Work in progress) Replacing the placeholder links (Syllabus/GitHub) and the outlines with real chapters and labs.
+    </p>
+  </div>
+
+  <!-- BOOKS OVERVIEW -->
+  <div id="books" class="section">
+    <h2>Books</h2>
+    <p>
+      Start at Earth and climb toward Void: from grounded engineering reality to human questions of meaning.
+    </p>
+
+    <div class="book-card">
+      <div class="book-top">
+        <h3 class="book-title" style="margin:0;">Book I — Metal → Motors</h3>
+        <div class="book-meta">
+          <span class="pill">Earth / Chi</span>
+          <span class="pill">Groundedness</span>
+          <span class="pill">Actuators</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px;">
+        Materials, torque, tolerances, mechanical reality — building the foundations.
+      </p>
+      <a class="nav-link" href="#book1" style="display:inline-block; padding-left:0;">Open Book I →</a>
+    </div>
+
+    <div class="book-card">
+      <div class="book-top">
+        <h3 class="book-title" style="margin:0;">Book II — Motors → Movement</h3>
+        <div class="book-meta">
+          <span class="pill">Water / Sui</span>
+          <span class="pill">Fluidity</span>
+          <span class="pill">Control</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px;">
+        Dynamics, control, embodiment, smoothness — turning torque into motion.
+      </p>
+      <a class="nav-link" href="#book2" style="display:inline-block; padding-left:0;">Open Book II →</a>
+    </div>
+
+    <div class="book-card">
+      <div class="book-top">
+        <h3 class="book-title" style="margin:0;">Book III — Movement → Behavior</h3>
+        <div class="book-meta">
+          <span class="pill">Fire / Ka</span>
+          <span class="pill">Motivation</span>
+          <span class="pill">Planning</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px;">
+        Goals, tasks, and sequences — motion organized into action.
+      </p>
+      <a class="nav-link" href="#book3" style="display:inline-block; padding-left:0;">Open Book III →</a>
+    </div>
+
+    <div class="book-card">
+      <div class="book-top">
+        <h3 class="book-title" style="margin:0;">Book IV — Behavior → Learning</h3>
+        <div class="book-meta">
+          <span class="pill">Air / Fu</span>
+          <span class="pill">Expansion</span>
+          <span class="pill">Data</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px;">
+        Learning from demonstrations and experience — scaling beyond hand-design.
+      </p>
+      <a class="nav-link" href="#book4" style="display:inline-block; padding-left:0;">Open Book IV →</a>
+    </div>
+
+    <div class="book-card">
+      <div class="book-top">
+        <h3 class="book-title" style="margin:0;">Book V — Learning → Human</h3>
+        <div class="book-meta">
+          <span class="pill">Void / Ku</span>
+          <span class="pill">Philosophy</span>
+          <span class="pill">Meaning</span>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px;">
+        What does it mean to build human-scale intelligence and embodiment?
+      </p>
+      <a class="nav-link" href="#book5" style="display:inline-block; padding-left:0;">Open Book V →</a>
+    </div>
+
+  </div>
+
+  <!-- BOOK I -->
+  <div id="book1" class="section">
+    <h2>Book I — Metal → Motors</h2>
+    <p class="muted"><b>Element:</b> Earth / Chi · <b>Theme:</b> Groundedness</p>
+
+    <div class="quote">
+      <p>“The engineer’s first problem in any design situation is to discover what the problem really is.”</p>
+      <div class="attribution">— Samuel Florman</div>
+    </div>
+
+    <h3>Outline</h3>
+    <div class="outline">
+      <div class="outline-item">
+        <b>1. Materials & Constraints</b>
+        <span class="muted">Stress/strain intuition, fasteners, tolerances, friction, stiffness.</span>
+      </div>
+      <div class="outline-item">
+        <b>2. Actuator Fundamentals</b>
+        <span class="muted">Torque, speed, power, backdrivability, gear ratios, motor constants.</span>
+      </div>
+      <div class="outline-item">
+        <b>3. Building a Motor Module</b>
+        <span class="muted">A repeatable “unit cell” actuator: mount + transmission + sensing + wiring.</span>
+      </div>
+      <div class="outline-item">
+        <b>4. Reliability & Debug</b>
+        <span class="muted">Heat, wear, alignment, looseness, failure modes, test rigs.</span>
+      </div>
+      <div class="outline-item">
+        <b>Capstone</b>
+        <span class="muted">Build and characterize one actuator (torque/speed curves, repeatability, thermal limits).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK II -->
+  <div id="book2" class="section">
+    <h2>Book II — Motors → Movement</h2>
+    <p class="muted"><b>Element:</b> Water / Sui · <b>Theme:</b> Fluidity</p>
+
+    <div class="quote">
+      <p>“Be formless, shapeless—like water.”</p>
+      <div class="attribution">— Bruce Lee</div>
+    </div>
+
+    <h3>Outline</h3>
+    <div class="outline">
+      <div class="outline-item">
+        <b>1. Kinematics</b>
+        <span class="muted">Frames, Jacobians, forward/inverse kinematics, singularities.</span>
+      </div>
+      <div class="outline-item">
+        <b>2. Dynamics (Enough to Build)</b>
+        <span class="muted">Inertia, damping, gravity compensation, simple models that work.</span>
+      </div>
+      <div class="outline-item">
+        <b>3. Control</b>
+        <span class="muted">PID, impedance control, position vs torque control, stability intuition.</span>
+      </div>
+      <div class="outline-item">
+        <b>4. Trajectories</b>
+        <span class="muted">Smooth interpolation, time parameterization, limits, jerk, safety.</span>
+      </div>
+      <div class="outline-item">
+        <b>Capstone</b>
+        <span class="muted">Make a limb move smoothly: stable tracking + compliance demo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK III -->
+  <div id="book3" class="section">
+    <h2>Book III — Movement → Behavior</h2>
+    <p class="muted"><b>Element:</b> Fire / Ka · <b>Theme:</b> Motivation</p>
+
+    <div class="quote">
+      <p>“Behavior is always directed toward something.”</p>
+      <div class="attribution">— Niko Tinbergen</div>
+    </div>
+
+    <h3>Outline</h3>
+    <div class="outline">
+      <div class="outline-item">
+        <b>1. Tasks & Goals</b>
+        <span class="muted">Rewards, constraints, objective functions, success metrics.</span>
+      </div>
+      <div class="outline-item">
+        <b>2. Skills & Primitives</b>
+        <span class="muted">Grasp, place, open, push, navigate — composing reusable actions.</span>
+      </div>
+      <div class="outline-item">
+        <b>3. Planning</b>
+        <span class="muted">Search, heuristics, symbolic planning, task & motion planning intuition.</span>
+      </div>
+      <div class="outline-item">
+        <b>4. Robustness</b>
+        <span class="muted">Monitoring, recovery, replanning, uncertainty and failure handling.</span>
+      </div>
+      <div class="outline-item">
+        <b>Capstone</b>
+        <span class="muted">A multi-step household behavior (e.g., pick → carry → place) with recovery.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK IV -->
+  <div id="book4" class="section">
+    <h2>Book IV — Behavior → Learning</h2>
+    <p class="muted"><b>Element:</b> Air / Fu · <b>Theme:</b> Expansion</p>
+
+    <div class="quote">
+      <p>“We can only see a short distance ahead, but we can see plenty there that needs to be done.”</p>
+      <div class="attribution">— Alan Turing</div>
+    </div>
+
+    <h3>Outline</h3>
+    <div class="outline">
+      <div class="outline-item">
+        <b>1. Data & Demonstrations</b>
+        <span class="muted">Teleop data, datasets, labeling, evaluation pitfalls.</span>
+      </div>
+      <div class="outline-item">
+        <b>2. Imitation Learning</b>
+        <span class="muted">Behavior cloning, DAgger intuition, representation learning basics.</span>
+      </div>
+      <div class="outline-item">
+        <b>3. Reinforcement Learning</b>
+        <span class="muted">Rewards, exploration, offline RL basics, safety constraints.</span>
+      </div>
+      <div class="outline-item">
+        <b>4. Generalization</b>
+        <span class="muted">Domain randomization, sim2real, compositionality, failure analysis.</span>
+      </div>
+      <div class="outline-item">
+        <b>Capstone</b>
+        <span class="muted">Train a policy that improves with more data and handles perturbations.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK V -->
+  <div id="book5" class="section">
+    <h2>Book V — Learning → Human</h2>
+    <p class="muted"><b>Element:</b> Void / Ku · <b>Theme:</b> Philosophy</p>
+
+    <div class="quote">
+      <p>“The question of whether machines can think is about as relevant as whether submarines can swim.”</p>
+      <div class="attribution">— Edsger Dijkstra</div>
+    </div>
+
+    <h3>Outline</h3>
+    <div class="outline">
+      <div class="outline-item">
+        <b>1. Embodiment & Meaning</b>
+        <span class="muted">Why bodies matter, human-centered evaluation, what “intelligence” cashes out to.</span>
+      </div>
+      <div class="outline-item">
+        <b>2. Human-Robot Interaction</b>
+        <span class="muted">Interfaces, trust, usability, teleoperation as collaboration.</span>
+      </div>
+      <div class="outline-item">
+        <b>3. Safety & Ethics</b>
+        <span class="muted">Failure modes, incentives, deployment risks, responsible design.</span>
+      </div>
+      <div class="outline-item">
+        <b>4. The Future of Work & Agency</b>
+        <span class="muted">Robots as tools, autonomy, abundance vs control, open ecosystems.</span>
+      </div>
+      <div class="outline-item">
+        <b>Capstone</b>
+        <span class="muted">Write a short “builder’s manifesto” + demo a human-in-the-loop robot workflow.</span>
+      </div>
+      <div class="outline-item">
+        <b>Final Project</b>
+        <span class="muted">Now you have all the pieces build a humanoid from scratch.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = "none";
+    }
+
+    // Close menu if you tap outside it
+    document.addEventListener("click", function(e) {
+      const menu = document.getElementById("mobileMenu");
+      const btn = document.querySelector(".menu-btn");
+      if (!menu || !btn) return;
+
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedButton = btn.contains(e.target);
+
+      if (!clickedInsideMenu && !clickedButton) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -273,7 +273,6 @@
 <!-- Mobile Menu -->
 <div id="mobileMenu" class="mobile-menu">
   <a href="#manifesto" onclick="closeMenu()">Manifesto</a>
-  <a href="#atlas" onclick="closeMenu()">Atlas</a>
   <a href="#projects" onclick="closeMenu()">Projects</a>
   <a href="#team" onclick="closeMenu()">Team</a>
   <a href="#contribute" onclick="closeMenu()">Contribute</a>
@@ -287,7 +286,6 @@
 <!-- Desktop Top Nav -->
 <div class="topbar">
   <a class="nav-link" href="#manifesto">Manifesto</a>
-  <a class="nav-link" href="#atlas">Atlas</a>
   <a class="nav-link" href="#projects">Projects</a>
   <a class="nav-link" href="#team">Team</a>
 </div>
@@ -428,19 +426,6 @@
     <p><b>HBRN is building the Linux, the Wikipedia, and the HomeBrew Club of Robotics.</b></p>
   </div>
 
-  <!-- ATLAS -->
-  <div id="atlas" class="section">
-    <h2>Atlas</h2>
-    <p>
-      The Atlas is a living index of open robots — linking designs, CAD, BOMs, costs, maturity,
-      and licensing — so anyone can build, modify, and iterate.
-    </p>
-    <p class="muted">
-      Work in progress. The Atlas is actively being built and will expand over time.
-      <span class="muted">(Link coming soon)</span>
-    </p>
-  </div>
-
 
   <!-- PROJECTS -->
   <div id="projects" class="section">
@@ -451,15 +436,24 @@
       Think <a href="https://www.nand2tetris.org/" target="_blank" rel="noopener">NAND2Tetris</a>,
       (but for robotics) starting from first principles and ending with a working humanoid system.
       <br>
-      <span class="muted">(Link coming soon)</span>
+      <a href="m2h.html" target="_blank" rel="noopener"><span class="muted">(Link to outline)</span></a>
     </p>
 
     <p>
-      <b>OSH</b> (pronounced “Oh-Ss”) — An open, modular humanoid robotics project maintained within HBRN, focused on low-cost,
+      <b>OSH Atlas</b> (pronounced “Oh-Ss”) — An open atlas of humanoid robotics projects, resources, and communities maintained within HBRN, focused on low-cost,
       reproducible hardware, shared interfaces, and community-driven iteration.
       The name draws inspiration from <i>Oshi Shinobu</i> or simply put in <a href="https://en.wikipedia.org/wiki/Brazilian_jiu-jitsu" target="_blank" rel="noopener">Brazilian Jiu-Jitsu</a> “Oss”.
       <br>
-      <span class="muted">(Link coming soon)</span>
+      <a href="osh.html" target="_blank" rel="noopener"><span class="muted">(Link to Osh)</span></a>
+    </p>
+
+    <p>
+      <b>UMOJA</b> — <b>Universal Modular Open Joint Assessment</b>.
+      A shared checklist and benchmark for humanoid projects: testing <b>mind</b> (basic reasoning + navigation + locomotion + manipulation tasks),
+      <b>body</b> (a “Military PT test” for robotics: strength, speed, stability, endurance),
+      and <b>soul</b> (whether the project is truly open — e.g., <b>CERN-OHL</b> or equivalent licensing + reproducible documentation).
+      <br>
+      <a href="umoja.html" target="_blank" rel="noopener"><span class="muted">(Link to UMOJA description)</span></a>
     </p>
 
     <p>
@@ -495,6 +489,10 @@
     <p>
       <a class="top-btn" href="https://discord.gg/jGWZzaQwqt" target="_blank" rel="noopener">Join Discord →</a>
     </p>
+    <div class="muted" style="margin-top:10px;">
+        This page is intentionally minimal. To propose changes, submit a PR to
+        <a class="link" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">hbrnetwork/hbrnetwork.github.io</a>.
+    </div>
   </div>
 
   <script>

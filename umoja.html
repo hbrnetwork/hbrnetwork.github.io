@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UMOJA — Universal Modular Open Joint Assessment</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <style>
+    body, h1, h2, h3, a, button, li, input, label {
+      font-family: "Raleway", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: #f3ebd8;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Top nav bar */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 9999;
+      background: rgba(243, 235, 216, 0.85);
+      backdrop-filter: blur(6px);
+      pointer-events: auto;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 800;
+      color: #333;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover { background: rgba(0,0,0,0.06); }
+
+    /* Top-right buttons group */
+    .top-right {
+      position: fixed;
+      top: 14px;
+      right: 16px;
+      z-index: 10000;
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .top-btn {
+      background: #333;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: inline-block;
+    }
+    .top-btn:hover { background: #555; }
+
+    .top-btn.secondary {
+      background: transparent;
+      color: #333;
+      border: 1px solid rgba(0,0,0,0.18);
+    }
+    .top-btn.secondary:hover { background: rgba(0,0,0,0.06); }
+
+    /* Ensure button text */
+    .top-btn, .top-btn:visited, .top-btn:active { color: #ffffff !important; }
+    .top-btn.secondary, .top-btn.secondary:visited, .top-btn.secondary:active { color: #333 !important; }
+
+    /* Mobile hamburger */
+    .menu-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10002;
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: 900;
+      color: #333;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      background: rgba(243, 235, 216, 0.7);
+    }
+    .menu-btn:active { transform: translateY(1px); }
+
+    /* Mobile dropdown menu */
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      left: 16px;
+      right: 16px;
+      z-index: 10003;
+      background: rgba(243, 235, 216, 0.95);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 900;
+    }
+    .mobile-menu a:hover { background: rgba(0,0,0,0.06); }
+    .mobile-menu .mobile-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Hero */
+    .hero-spacer { height: 70px; }
+    .center-container { height: 100%; pointer-events: none; }
+
+    .hero-title {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 880px;
+      opacity: 0.92;
+    }
+
+    .muted { opacity: 0.78; font-size: 16px; }
+
+    /* Sections */
+    .section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 90px 18px 70px 18px;
+    }
+
+    .section h2 {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin: 0 0 12px 0;
+      color: #1f1f1f;
+    }
+
+    .section h3 {
+      font-weight: 900;
+      margin: 26px 0 10px 0;
+      color: #1f1f1f;
+    }
+
+    .section p, .section li {
+      color: #333;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 14px 0;
+    }
+
+    /* Cards */
+    .card {
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 16px;
+      padding: 18px 18px 14px 18px;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-top: 16px;
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(243, 235, 216, 0.6);
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    /* Quote */
+    .quote {
+      margin-top: 12px;
+      padding: 14px 14px 12px 14px;
+      border-left: 5px solid rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.03);
+      border-radius: 12px;
+    }
+    .quote p { margin: 0; font-size: 18px; line-height: 1.6; }
+    .quote .attribution { margin-top: 8px; font-size: 14px; font-weight: 900; opacity: 0.75; }
+
+    /* Checklist */
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 12px 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.18);
+    }
+
+    .check input {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      accent-color: #333;
+    }
+
+    .check b { font-weight: 900; }
+
+    .check .small {
+      display: block;
+      margin-top: 4px;
+      font-size: 14px;
+      opacity: 0.78;
+      line-height: 1.5;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .summary {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 900;
+      opacity: 0.85;
+    }
+
+    .link { color: #333; font-weight: 900; text-decoration: underline; }
+    .link:hover { opacity: 0.85; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (max-width: 720px) {
+      .topbar { display: none; }
+      .top-right { display: none; }
+      .menu-btn { display: inline-block; }
+      .hero-spacer { height: 90px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile Hamburger -->
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰ Menu</button>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#mind" onclick="closeMenu()">Mind</a>
+    <a href="#body" onclick="closeMenu()">Body</a>
+    <a href="#soul" onclick="closeMenu()">Soul</a>
+    <a href="#score" onclick="closeMenu()">Score</a>
+
+    <div class="mobile-actions">
+      <a class="top-btn" href="osh.html" rel="noopener">Back to OSH Atlas →</a>
+      <a class="top-btn secondary" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR</a>
+    </div>
+  </div>
+
+  <!-- Desktop Top Nav -->
+  <div class="topbar">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#mind">Mind</a>
+    <a class="nav-link" href="#body">Body</a>
+    <a class="nav-link" href="#soul">Soul</a>
+    <a class="nav-link" href="#score">Score</a>
+  </div>
+
+  <!-- Desktop Top-right Buttons -->
+  <div class="top-right">
+    <a class="top-btn secondary" href="osh.html">Back to OSH Atlas</a>
+    <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR →</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-spacer"></div>
+
+  <div class="w3-display-container center-container" style="min-height: 70vh;">
+    <div class="w3-display-middle w3-center" style="pointer-events: auto; padding: 0 16px;">
+      <h1 class="hero-title">UMOJA</h1>
+      <p class="hero-subtitle">
+        <b>Universal Modular Open Joint Assessment</b> — a simple, builder-first checklist to evaluate whether a humanoid project has:
+        <b>Mind</b> (capable behaviors), <b>Body</b> (physical performance), and <b>Soul</b> (real openness + reproducibility).
+      </p>
+      <div class="muted" style="margin-top:10px;">
+        This page is intentionally minimal. To propose changes, submit a PR to
+        <a class="link" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">hbrnetwork/hbrnetwork.github.io</a>.
+      </div>
+      <div style="margin-top:16px;">
+        <a class="top-btn secondary" href="#mind">Start the Checklist ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <h2>About</h2>
+    <p>
+      UMOJA is meant to be a common language for open humanoid builders.
+      It’s not “perfect benchmarking” — it’s a <b>shared bar</b> for seriousness, reproducibility, and basic capability.
+    </p>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 style="margin:0; font-weight:900;">How Certification Works (v0)</h3>
+        <div>
+          <span class="pill">Mind</span>
+          <span class="pill">Body</span>
+          <span class="pill">Soul</span>
+        </div>
+      </div>
+      <ul style="margin: 12px 0 0 18px;">
+        <li><b>Mind</b> = can it do basic tasks (navigation, locomotion, manipulation) with clear demos?</li>
+        <li><b>Body</b> = can it pass a robotics “PT test” (stability, speed, payload, endurance)?</li>
+        <li><b>Soul</b> = is it truly open (license + CAD/BOM + build docs + reproducibility)?</li>
+      </ul>
+      <p class="muted" style="margin-top:10px;">
+        For now, this page is a checklist. Later it becomes a standard: video proofs + logs + reproducible builds.
+      </p>
+    </div>
+  </div>
+
+  <!-- MIND -->
+  <div id="mind" class="section">
+    <h2>Mind — Capability Checklist</h2>
+    <p class="muted">Basic intelligence: can the robot do common-sense tasks reliably?</p>
+
+    <div class="quote">
+        <p>“Science is what we understand well enough to explain to a computer. Art is everything else we do.”</p>
+        <div class="attribution">— Donald E. Knuth</div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-top">
+        <h3 style="margin:0; font-weight:900;">Mind (v0)</h3>
+        <div><span class="pill">Navigation</span><span class="pill">Locomotion</span><span class="pill">Manipulation</span></div>
+      </div>
+
+      <div class="checklist" data-group="mind">
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Perception + State Estimation</b>
+            <span class="small">Has a repeatable sensing stack (IMU + joint encoders + camera/LiDAR) and publishes pose/TF reliably.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Basic Navigation</b>
+            <span class="small">Can move from A→B in a simple indoor space (with obstacle avoidance). Provide a demo + map/log.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Locomotion Skill</b>
+            <span class="small">Can walk/step in a stable way (or roll if wheeled). Must show start/stop and directional control.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Manipulation Primitive</b>
+            <span class="small">Can pick-and-place a simple object on a table. Provide success rate across ≥10 trials.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Task Composition</b>
+            <span class="small">Demonstrates at least one multi-step task (navigate → reach → grasp → place) with a failure recovery behavior.</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="summary" id="mindSummary">Mind: 0 / 5 checked</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div id="body" class="section">
+    <h2>Body — Physical “PT Test”</h2>
+    <p class="muted">Mechanical reality: strength, stability, speed, and endurance.</p>
+
+    <div class="quote">
+        <p>“Fatigue makes cowards of us all.”</p>
+        <div class="attribution">— Vince Lombardi</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-top">
+        <h3 style="margin:0; font-weight:900;">Body (v0)</h3>
+        <div><span class="pill">Stability</span><span class="pill">Speed</span><span class="pill">Endurance</span></div>
+      </div>
+
+      <div class="checklist" data-group="body">
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Stand + Recover</b>
+            <span class="small">Can stand still for 60s and recover from a gentle push without falling.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Walk Test</b>
+            <span class="small">Covers a fixed distance (e.g., 10m) under control without stalling or unsafe oscillation. Include time.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Turn + Stop</b>
+            <span class="small">Can execute a 90° turn and stop cleanly (no drift / no falls) on command.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Payload / Force</b>
+            <span class="small">Demonstrates carrying or holding a known payload (e.g., 1kg) or exerting a measured end-effector force.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Endurance</b>
+            <span class="small">Runs continuously for ≥15 minutes (or a defined battery draw test) with logs and thermal notes.</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="summary" id="bodySummary">Body: 0 / 5 checked</div>
+    </div>
+  </div>
+
+  <!-- SOUL -->
+  <div id="soul" class="section">
+    <h2>Soul — Openness & Reproducibility</h2>
+    <p class="muted">No “open-washing”: can an independent builder replicate it?</p>
+
+    <div class="quote">
+      <p>“Given enough eyeballs, all bugs are shallow.”</p>
+      <div class="attribution">— Eric S. Raymond</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 style="margin:0; font-weight:900;">Soul (v0)</h3>
+        <div><span class="pill">License</span><span class="pill">Docs</span><span class="pill">Reproducible</span></div>
+      </div>
+
+      <div class="checklist" data-group="soul">
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Clear Open Hardware License</b>
+            <span class="small">Hardware is licensed (e.g., CERN-OHL or equivalent). License file is in the repo.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>CAD + BOM Available</b>
+            <span class="small">Complete CAD + BOM + part sources provided (and not behind a paywall).</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Build Guide</b>
+            <span class="small">Step-by-step assembly guide with photos/video + tooling list + calibration steps.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Software Reproducibility</b>
+            <span class="small">Pinned dependencies, setup instructions, and a minimal “bring-up” script/test.</span>
+          </div>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" class="chk" />
+          <div>
+            <b>Evidence of Replication</b>
+            <span class="small">At least one independent builder has replicated the system, or there is a public build log template.</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="summary" id="soulSummary">Soul: 0 / 5 checked</div>
+    </div>
+  </div>
+
+  <!-- SCORE -->
+  <div id="score" class="section">
+    <h2>Score</h2>
+    <p>
+      This is a quick readout so builders can say “we’re UMOJA-ready” without long debates.
+      (For now it’s local-only; later we’ll standardize video proofs + logs.)
+    </p>
+
+    <div class="card">
+      <div class="card-top">
+        <h3 style="margin:0; font-weight:900;">UMOJA v0 Readout</h3>
+        <div><span class="pill" id="badge">TBD</span></div>
+      </div>
+
+      <ul style="margin: 12px 0 0 18px;">
+        <li id="scoreMind"><b>Mind:</b> 0 / 5</li>
+        <li id="scoreBody"><b>Body:</b> 0 / 5</li>
+        <li id="scoreSoul"><b>Soul:</b> 0 / 5</li>
+      </ul>
+
+      <p class="muted" style="margin-top:10px;">
+        Suggested bar for “UMOJA Certified (v0)”: <b>/5</b> in each category.
+      </p>
+
+      <p style="margin-top:12px;">
+        <a class="top-btn" href="https://github.com/hbrnetwork/hbrnetwork.github.io" target="_blank" rel="noopener">Submit a PR →</a>
+        <a class="top-btn secondary" href="osh.html" rel="noopener" style="margin-left:8px;">Back to OSH Atlas</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = "none";
+    }
+
+    // Close menu if you tap outside it
+    document.addEventListener("click", function(e) {
+      const menu = document.getElementById("mobileMenu");
+      const btn = document.querySelector(".menu-btn");
+      if (!menu || !btn) return;
+
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedButton = btn.contains(e.target);
+
+      if (!clickedInsideMenu && !clickedButton) {
+        menu.style.display = "none";
+      }
+    });
+
+    function countChecked(groupName) {
+      const group = document.querySelector('.checklist[data-group="' + groupName + '"]');
+      if (!group) return { checked: 0, total: 0 };
+      const boxes = group.querySelectorAll('input.chk');
+      let c = 0;
+      boxes.forEach(b => { if (b.checked) c += 1; });
+      return { checked: c, total: boxes.length };
+    }
+
+    function update() {
+      const m = countChecked("mind");
+      const b = countChecked("body");
+      const s = countChecked("soul");
+
+      const mindSummary = document.getElementById("mindSummary");
+      const bodySummary = document.getElementById("bodySummary");
+      const soulSummary = document.getElementById("soulSummary");
+
+      if (mindSummary) mindSummary.textContent = `Mind: ${m.checked} / ${m.total} checked`;
+      if (bodySummary) bodySummary.textContent = `Body: ${b.checked} / ${b.total} checked`;
+      if (soulSummary) soulSummary.textContent = `Soul: ${s.checked} / ${s.total} checked`;
+
+      const scoreMind = document.getElementById("scoreMind");
+      const scoreBody = document.getElementById("scoreBody");
+      const scoreSoul = document.getElementById("scoreSoul");
+
+      if (scoreMind) scoreMind.innerHTML = `<b>Mind:</b> ${m.checked} / ${m.total}`;
+      if (scoreBody) scoreBody.innerHTML = `<b>Body:</b> ${b.checked} / ${b.total}`;
+      if (scoreSoul) scoreSoul.innerHTML = `<b>Soul:</b> ${s.checked} / ${s.total}`;
+
+      // Simple badge rule (v0): =5 in each group
+      const badge = document.getElementById("badge");
+      const certified = (m.checked === 5 && b.checked === 5 && s.checked === 5);
+
+      if (badge) {
+        badge.textContent = certified ? "UMOJA Certified (v0)" : "Not Yet Certified";
+        badge.style.background = certified ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.25)";
+        badge.style.border = "1px solid rgba(0,0,0,0.12)";
+      }
+    }
+
+    // Wire listeners
+    document.querySelectorAll("input.chk").forEach(el => {
+      el.addEventListener("change", update);
+    });
+
+    update();
+  </script>
+
+</body>
+</html>
