@@ -10,334 +10,7 @@
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-  <style>
-    body, h1, h2, h3, a, button, li {
-      font-family: "Raleway", sans-serif;
-    }
-
-    body, html {
-      height: 100%;
-      background-color: #f3ebd8;
-      margin: 0;
-      color: #333;
-    }
-
-    /* Top nav bar (desktop) */
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      z-index: 9999;
-      background: rgba(243, 235, 216, 0.85);
-      backdrop-filter: blur(6px);
-      pointer-events: auto;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .nav-link {
-      font-size: 16px;
-      font-weight: 900;
-      color: #333;
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 8px;
-    }
-
-    .nav-link:hover {
-      background: rgba(0,0,0,0.06);
-    }
-
-    /* Top-right buttons group (desktop) */
-    .top-right {
-      position: fixed;
-      top: 14px;
-      right: 16px;
-      z-index: 10000;
-      display: flex;
-      gap: 10px;
-      pointer-events: auto;
-    }
-
-    .top-btn {
-      background: #333;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,0.15);
-      display: inline-block;
-    }
-
-    .top-btn:hover {
-      background: #555;
-    }
-
-    .top-btn.secondary {
-      background: transparent;
-      color: #333;
-      border: 1px solid rgba(0,0,0,0.18);
-    }
-
-    .top-btn.secondary:hover {
-      background: rgba(0,0,0,0.06);
-    }
-
-    /* Make sure button text stays white */
-    .top-btn, .top-btn:visited, .top-btn:active { color: #ffffff !important; }
-    .top-btn.secondary, .top-btn.secondary:visited, .top-btn.secondary:active { color: #333 !important; }
-
-    /* Mobile hamburger */
-    .menu-btn {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 10002;
-      display: none;
-      background: transparent;
-      border: 1px solid rgba(0,0,0,0.18);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-weight: 900;
-      color: #333;
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-      background: rgba(243, 235, 216, 0.7);
-    }
-
-    .menu-btn:active { transform: translateY(1px); }
-
-    /* Mobile dropdown menu */
-    .mobile-menu {
-      position: fixed;
-      top: 62px;
-      left: 16px;
-      right: 16px;
-      z-index: 10003;
-      background: rgba(243, 235, 216, 0.95);
-      border: 1px solid rgba(0,0,0,0.10);
-      border-radius: 14px;
-      padding: 10px;
-      display: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 12px 12px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 900;
-    }
-
-    .mobile-menu a:hover {
-      background: rgba(0,0,0,0.06);
-    }
-
-    .mobile-menu .mobile-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(0,0,0,0.08);
-    }
-
-    /* Hero */
-    .hero-spacer { height: 70px; }
-    .center-container { height: 100%; pointer-events: none; }
-
-    .hero-title {
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      margin: 0 0 10px 0;
-      color: #1f1f1f;
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 0;
-      max-width: 760px;
-      opacity: 0.92;
-    }
-
-    .muted {
-      opacity: 0.78;
-      font-size: 16px;
-    }
-
-    /* Sections */
-    .section {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 90px 18px 70px 18px;
-    }
-
-    .section h2 {
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      margin: 0 0 12px 0;
-      color: #1f1f1f;
-    }
-
-    .section h3 {
-      font-weight: 900;
-      margin: 26px 0 10px 0;
-      color: #1f1f1f;
-    }
-
-    .section p, .section li {
-      color: #333;
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 0 0 14px 0;
-    }
-
-    /* Book cards */
-    .book-card {
-      border: 1px solid rgba(0,0,0,0.10);
-      border-radius: 16px;
-      padding: 18px 18px 14px 18px;
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-      margin-top: 16px;
-    }
-
-    .book-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 12px;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    .book-title {
-      font-size: 22px;
-      font-weight: 900;
-      margin: 0;
-      color: #1f1f1f;
-    }
-
-    .book-meta {
-      font-size: 14px;
-      font-weight: 900;
-      opacity: 0.8;
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      margin: 0;
-      white-space: nowrap;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: rgba(243, 235, 216, 0.6);
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .quote {
-      margin-top: 12px;
-      padding: 14px 14px 12px 14px;
-      border-left: 5px solid rgba(0,0,0,0.35);
-      background: rgba(0,0,0,0.03);
-      border-radius: 12px;
-    }
-
-    .quote p {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .quote .attribution {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 900;
-      opacity: 0.75;
-    }
-
-    .outline {
-      margin-top: 14px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .outline-item {
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.18);
-      padding: 12px 12px 10px 12px;
-    }
-
-    .outline-item b {
-      font-weight: 900;
-    }
-
-    .outline-item .muted {
-      display: block;
-      margin-top: 4px;
-    }
-
-    /* Smooth scrolling */
-    html { scroll-behavior: smooth; }
-
-    /* Responsive behavior */
-    @media (max-width: 720px) {
-      .topbar { display: none; }
-      .top-right { display: none; }
-      .menu-btn { display: inline-block; }
-      .hero-spacer { height: 90px; }
-    }
-
-    /* Home icon button (top-left, always visible) */
-    .home-btn{
-        position: fixed;
-        top: 14px;
-        left: 16px;
-        z-index: 10005;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px 10px 12px;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 900;
-        font-size: 14px;
-        color: #333;
-        border: 1px solid rgba(0,0,0,0.18);
-        background: rgba(243,235,216,0.85);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        pointer-events: auto;
-    }
-    .home-btn:hover { background: rgba(0,0,0,0.06); }
-    .home-btn:active { transform: translateY(1px); }
-
-    .home-btn img{
-        width: 22px;
-        height: 22px;
-        object-fit: contain;
-    }
-
-    @media (max-width: 720px){
-        .home-btn{ top: 16px; left: 70px; }
-        .home-btn span{ display: none; } /* icon-only on mobile */
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -352,12 +25,12 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="mobile-menu">
     <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#books" onclick="closeMenu()">Books</a>
-    <a href="#book1" onclick="closeMenu()">Book I — Earth</a>
-    <a href="#book2" onclick="closeMenu()">Book II — Water</a>
-    <a href="#book3" onclick="closeMenu()">Book III — Fire</a>
-    <a href="#book4" onclick="closeMenu()">Book IV — Air</a>
-    <a href="#book5" onclick="closeMenu()">Book V — Void</a>
+    <a href="#parts" onclick="closeMenu()">Parts</a>
+    <a href="#part1" onclick="closeMenu()">Part I — Earth</a>
+    <a href="#part2" onclick="closeMenu()">Part II — Water</a>
+    <a href="#part3" onclick="closeMenu()">Part III — Fire</a>
+    <a href="#part4" onclick="closeMenu()">Part IV — Air</a>
+    <a href="#part5" onclick="closeMenu()">Part V — Void</a>
 
     <div class="mobile-actions">
       <a class="top-btn" href="Metal2Humanoid_Syllabus.pdf" >Syllabus →</a>
@@ -368,17 +41,17 @@
   <!-- Desktop Top Nav -->
   <div class="topbar">
     <a class="nav-link" href="#about">About</a>
-    <a class="nav-link" href="#books">Books</a>
-    <a class="nav-link" href="#book1">Earth</a>
-    <a class="nav-link" href="#book2">Water</a>
-    <a class="nav-link" href="#book3">Fire</a>
-    <a class="nav-link" href="#book4">Air</a>
-    <a class="nav-link" href="#book5">Void</a>
+    <a class="nav-link" href="#parts">Parts</a>
+    <a class="nav-link" href="#part1">Earth</a>
+    <a class="nav-link" href="#part2">Water</a>
+    <a class="nav-link" href="#part3">Fire</a>
+    <a class="nav-link" href="#part4">Air</a>
+    <a class="nav-link" href="#part5">Void</a>
   </div>
 
   <!-- Desktop Top-right Buttons -->
   <div class="top-right">
-    <a class="top-btn secondary" href="#books">Start Here</a>
+    <a class="top-btn secondary" href="#parts">Start Here</a>
     <a class="top-btn" href="Metal2Humanoid_Syllabus.pdf" >Syllabus →</a>
     <a class="top-btn" href="#" >GitHub →</a>
   </div>
@@ -393,10 +66,10 @@
         A NAND2Tetris-style path through robotics: from materials → actuators → motion → behavior → learning → human meaning.
       </p>
       <div class="muted" style="margin-top:10px;">
-        Five books. Five elements. Each book opens with an outline + an epigraph.
+        Five parts. Five elements. Each part contains two lectures, each with expandable units.<br>In collaboration with <a href="https://news.asimov.inc/" target="_blank" rel="noopener noreferrer">Menlo Research</a>.
       </div>
       <div style="margin-top:16px;">
-        <a class="top-btn secondary" href="#books">Browse the Books ↓</a>
+        <a class="top-btn secondary" href="#parts">Browse the Parts ↓</a>
       </div>
     </div>
   </div>
@@ -405,276 +78,2100 @@
   <div id="about" class="section">
     <h2>About</h2>
     <p>
-      This course is structured as <b>five books</b> inspired by “elements” and engineering fundamentals.
-      Each book begins with a quote, a learning promise, and a concrete outline of projects.
+      This course is structured as <b>five parts</b> inspired by “elements” and a full-stack robotics build path.
+      Each part contains <b>two lectures</b> with <b>expandable units</b> and project overviews.
     </p>
     <p class="muted">
-      (Work in progress) Replacing the placeholder links (Syllabus/GitHub) and the outlines with real chapters and labs.
+      (Work in progress) Unit content is placeholder for now: <b>⚙️ In Progress</b>.
     </p>
   </div>
 
-  <!-- BOOKS OVERVIEW -->
-  <div id="books" class="section">
-    <h2>Books</h2>
+  <!-- PARTS OVERVIEW -->
+  <div id="parts" class="section">
+    <h2>Parts</h2>
     <p>
       Start at Earth and climb toward Void: from grounded engineering reality to human questions of meaning.
     </p>
 
     <div class="book-card">
       <div class="book-top">
-        <h3 class="book-title" style="margin:0;">Book I — Metal → Motors</h3>
+        <h3 class="book-title" style="margin:0;">Part I — Earth: Metal → Actuation</h3>
         <div class="book-meta">
-          <span class="pill">Earth / Chi</span>
-          <span class="pill">Groundedness</span>
-          <span class="pill">Actuators</span>
+          <span class="pill">≈4 hrs</span>
+          <span class="pill">Lectures 1–2</span>
+          <span class="pill">Projects 1–2</span>
         </div>
       </div>
       <p class="muted" style="margin-top:8px;">
-        Materials, torque, tolerances, mechanical reality — building the foundations.
+        Motors, torque, heat, gearing, sensing, drivers, and digital twins — the unit cell of embodiment.
       </p>
-      <a class="nav-link" href="#book1" style="display:inline-block; padding-left:0;">Open Book I →</a>
+      <a class="nav-link" href="#part1" style="display:inline-block; padding-left:0;">Open Part I →</a>
     </div>
 
     <div class="book-card">
       <div class="book-top">
-        <h3 class="book-title" style="margin:0;">Book II — Motors → Movement</h3>
+        <h3 class="book-title" style="margin:0;">Part II — Water: Actuation → Motion</h3>
         <div class="book-meta">
-          <span class="pill">Water / Sui</span>
-          <span class="pill">Fluidity</span>
-          <span class="pill">Control</span>
+          <span class="pill">≈4 hrs</span>
+          <span class="pill">Lectures 3–4</span>
+          <span class="pill">Projects 3–4</span>
         </div>
       </div>
       <p class="muted" style="margin-top:8px;">
-        Dynamics, control, embodiment, smoothness — turning torque into motion.
+        Humanoid morphology, URDF/CAD, IK, trajectories, stability, and compliant control.
       </p>
-      <a class="nav-link" href="#book2" style="display:inline-block; padding-left:0;">Open Book II →</a>
+      <a class="nav-link" href="#part2" style="display:inline-block; padding-left:0;">Open Part II →</a>
     </div>
 
     <div class="book-card">
       <div class="book-top">
-        <h3 class="book-title" style="margin:0;">Book III — Movement → Behavior</h3>
+        <h3 class="book-title" style="margin:0;">Part III — Fire: Motion → Behavior</h3>
         <div class="book-meta">
-          <span class="pill">Fire / Ka</span>
-          <span class="pill">Motivation</span>
-          <span class="pill">Planning</span>
+          <span class="pill">≈4 hrs</span>
+          <span class="pill">Lectures 5–6</span>
+          <span class="pill">Projects 5–6</span>
         </div>
       </div>
       <p class="muted" style="margin-top:8px;">
-        Goals, tasks, and sequences — motion organized into action.
+        Skills, manipulation, behavior composition, planning, and robust recovery.
       </p>
-      <a class="nav-link" href="#book3" style="display:inline-block; padding-left:0;">Open Book III →</a>
+      <a class="nav-link" href="#part3" style="display:inline-block; padding-left:0;">Open Part III →</a>
     </div>
 
     <div class="book-card">
       <div class="book-top">
-        <h3 class="book-title" style="margin:0;">Book IV — Behavior → Learning</h3>
+        <h3 class="book-title" style="margin:0;">Part IV — Air: Behavior → Learning</h3>
         <div class="book-meta">
-          <span class="pill">Air / Fu</span>
-          <span class="pill">Expansion</span>
-          <span class="pill">Data</span>
+          <span class="pill">≈4 hrs</span>
+          <span class="pill">Lectures 7–8</span>
+          <span class="pill">Projects 7–8</span>
         </div>
       </div>
       <p class="muted" style="margin-top:8px;">
-        Learning from demonstrations and experience — scaling beyond hand-design.
+        Imitation + RL, sim2real, diffusion policies, and VLA instruction-following.
       </p>
-      <a class="nav-link" href="#book4" style="display:inline-block; padding-left:0;">Open Book IV →</a>
+      <a class="nav-link" href="#part4" style="display:inline-block; padding-left:0;">Open Part IV →</a>
     </div>
 
     <div class="book-card">
       <div class="book-top">
-        <h3 class="book-title" style="margin:0;">Book V — Learning → Human</h3>
+        <h3 class="book-title" style="margin:0;">Part V — Void: Learning → Humanoid</h3>
         <div class="book-meta">
-          <span class="pill">Void / Ku</span>
-          <span class="pill">Philosophy</span>
-          <span class="pill">Meaning</span>
+          <span class="pill">≈4 hrs</span>
+          <span class="pill">Lectures 9–10</span>
+          <span class="pill">Projects 9–10</span>
         </div>
       </div>
       <p class="muted" style="margin-top:8px;">
-        What does it mean to build human-scale intelligence and embodiment?
+        Meaning, ethics, labor, safety, openness, and final integration into a cohesive humanoid system.
       </p>
-      <a class="nav-link" href="#book5" style="display:inline-block; padding-left:0;">Open Book V →</a>
+      <a class="nav-link" href="#part5" style="display:inline-block; padding-left:0;">Open Part V →</a>
     </div>
 
   </div>
 
-  <!-- BOOK I -->
-  <div id="book1" class="section">
-    <h2>Book I — Metal → Motors</h2>
-    <p class="muted"><b>Element:</b> Earth / Chi · <b>Theme:</b> Groundedness</p>
+  <!-- PART I -->
+<div id="part1" class="section">
+  <h2>Part I — Earth: Metal → Actuation</h2>
+  <p class="muted"><b>Lectures:</b> 1–2 · <b>Projects:</b> 1–2 · <b>Total:</b> ≈4 hrs</p>
 
-    <div class="quote">
-      <p>“The engineer’s first problem in any design situation is to discover what the problem really is.”</p>
-      <div class="attribution">— Samuel Florman</div>
-    </div>
-
-    <h3>Outline</h3>
-    <div class="outline">
-      <div class="outline-item">
-        <b>1. Materials & Constraints</b>
-        <span class="muted">Stress/strain intuition, fasteners, tolerances, friction, stiffness.</span>
-      </div>
-      <div class="outline-item">
-        <b>2. Actuator Fundamentals</b>
-        <span class="muted">Torque, speed, power, backdrivability, gear ratios, motor constants.</span>
-      </div>
-      <div class="outline-item">
-        <b>3. Building a Motor Module</b>
-        <span class="muted">A repeatable “unit cell” actuator: mount + transmission + sensing + wiring.</span>
-      </div>
-      <div class="outline-item">
-        <b>4. Reliability & Debug</b>
-        <span class="muted">Heat, wear, alignment, looseness, failure modes, test rigs.</span>
-      </div>
-      <div class="outline-item">
-        <b>Capstone</b>
-        <span class="muted">Build and characterize one actuator (torque/speed curves, repeatability, thermal limits).</span>
-      </div>
-    </div>
+  <div class="quote">
+    <p>“The engineer’s first problem in any design situation is to discover what the problem really is.”</p>
+    <div class="attribution">— Samuel Florman</div>
   </div>
 
-  <!-- BOOK II -->
-  <div id="book2" class="section">
-    <h2>Book II — Motors → Movement</h2>
-    <p class="muted"><b>Element:</b> Water / Sui · <b>Theme:</b> Fluidity</p>
+  <h3>Lectures & Units (Expandable)</h3>
 
-    <div class="quote">
-      <p>“Be formless, shapeless—like water.”</p>
-      <div class="attribution">— Bruce Lee</div>
-    </div>
+  <div class="outline">
 
-    <h3>Outline</h3>
-    <div class="outline">
-      <div class="outline-item">
-        <b>1. Kinematics</b>
-        <span class="muted">Frames, Jacobians, forward/inverse kinematics, singularities.</span>
+    <!-- ========================= -->
+    <!-- LECTURE 1 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 1 — Build a Motor</span>
+          <span class="summary-meta">≈2 hrs · Project 1</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 1.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.1 What a motor really is (electromagnetism intuition)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: canonical intro + mental model + what to measure.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Paper, chapter, GitHub, doc, etc.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — 3–6 sentences describing the unit, key ideas, and expected outputs."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 1.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.2 Torque, speed, power (engineering intuition)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: back-of-the-envelope sizing + power limits.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Specsheets, calculators, or book chapters.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — include 1–2 key formulas + practical rules of thumb."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 1.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.3 Motor types (DC, BLDC, stepper)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: tradeoffs for robotics (control, torque density, cost).</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Comparisons, application notes, guides.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — when to choose each, and why humanoids usually use BLDC."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 1.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.4 Heat, efficiency, and failure modes</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: thermal intuition, derating, smoke-test avoidance.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Thermal notes, motor constants, efficiency curves.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — list common failure modes + how to test for them."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 1.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.5 Project 1 Overview: build + characterize a motor</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: BOM, tools, steps, what charts/results to produce.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Build walkthrough video.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 1.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables: torque-speed curve, thermal run, current draw, notes."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 1.6 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>1.6 Perspective: why actuators are only one bottleneck</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: systems view + what's coming in later parts.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Short talk / framing clip.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Essay or design note.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — why full-stack matters (mechanics + control + behavior + learning)."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>2. Dynamics (Enough to Build)</b>
-        <span class="muted">Inertia, damping, gravity compensation, simple models that work.</span>
+    </details>
+
+    <!-- ========================= -->
+    <!-- LECTURE 2 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 2 — What is an Actuator</span>
+          <span class="summary-meta">≈2 hrs · Project 2</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 2.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.1 Transmissions: gearboxes & reduction</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: harmonic vs planetary vs cycloidal, backlash, efficiency.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Application notes + teardown references.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how reduction changes torque density and control feel."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 2.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.2 Bearings, shafts, fasteners, tolerances</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: fits, alignment, wear, why things wobble.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Mechanical design references.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — common tolerance mistakes and how to avoid them."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 2.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.3 Sensing: encoders, current sensing, torque estimation</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: what sensors you need and what you can estimate.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Encoder docs + motor control notes.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what signals you log and why; calibration steps."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 2.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.4 Drivers, ESCs, wiring, and safety</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: power budgets, connectors, noise, grounding, fuses.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">ESC docs + wiring guides.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — safe bring-up checklist + failure prevention."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 2.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.5 CAD + digital twin basics (actuator module)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: model your actuator, export URDF, sanity-check ranges.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">CAD files + URDF template repo.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what a digital twin is and how it saves time later."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 2.6 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>2.6 Project 2 Overview: actuator module + test rig</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: build plan + test plan + logging + deliverables.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Build walkthrough video.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 2.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables: CAD/URDF, BOM, test results, plots, notes."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>3. Control</b>
-        <span class="muted">PID, impedance control, position vs torque control, stability intuition.</span>
-      </div>
-      <div class="outline-item">
-        <b>4. Trajectories</b>
-        <span class="muted">Smooth interpolation, time parameterization, limits, jerk, safety.</span>
-      </div>
-      <div class="outline-item">
-        <b>Capstone</b>
-        <span class="muted">Make a limb move smoothly: stable tracking + compliance demo.</span>
-      </div>
-    </div>
+    </details>
+
+  </div>
+</div>
+
+
+  <!-- PART II -->
+<div id="part2" class="section">
+  <h2>Part II — Water: Actuation → Motion</h2>
+  <p class="muted"><b>Lectures:</b> 3–4 · <b>Projects:</b> 3–4 · <b>Total:</b> ≈4 hrs</p>
+
+  <div class="quote">
+    <p>“Be formless, shapeless—like water.”</p>
+    <div class="attribution">— Bruce Lee</div>
   </div>
 
-  <!-- BOOK III -->
-  <div id="book3" class="section">
-    <h2>Book III — Movement → Behavior</h2>
-    <p class="muted"><b>Element:</b> Fire / Ka · <b>Theme:</b> Motivation</p>
+  <h3>Lectures & Units (Expandable)</h3>
 
-    <div class="quote">
-      <p>“Behavior is always directed toward something.”</p>
-      <div class="attribution">— Niko Tinbergen</div>
-    </div>
+  <div class="outline">
 
-    <h3>Outline</h3>
-    <div class="outline">
-      <div class="outline-item">
-        <b>1. Tasks & Goals</b>
-        <span class="muted">Rewards, constraints, objective functions, success metrics.</span>
+    <!-- ========================= -->
+    <!-- LECTURE 3 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 3 — Humanoid Morphology</span>
+          <span class="summary-meta">≈2 hrs · Project 3</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 3.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>3.1 Kinematic chains: arms, legs, spine, and head</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: chain structure, redundancy, reachability.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Kinematics notes / textbook chapter.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what a kinematic chain is and how DOFs affect capability."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 3.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>3.2 DOF, link lengths, and why bodies look the way they do</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: human vs robot morphology, tradeoffs, and constraints.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Reference designs / CAD / papers.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — 3–6 sentences: key morphology decisions and what they enable."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 3.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>3.3 CAD → URDF: how to build a usable robot model</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: frames, joint limits, inertias, collisions, visuals.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">URDF docs, examples, templates.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what makes a model ‘sim-ready’ and ‘planning-ready’."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 3.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>3.4 Center of Mass: balance and stability (intuitions that matter)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: CoM, support polygon, ZMP intuition, tipping.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Balance basics notes.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — the minimum stability toolbox for building motion."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 3.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>3.5 Project 3 Overview: assemble the body model + sanity checks</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: build your humanoid skeleton in CAD/URDF, confirm ranges and collisions.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Project walkthrough.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 3.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables: URDF, collision fixes, screenshots, basic stability checks."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>2. Skills & Primitives</b>
-        <span class="muted">Grasp, place, open, push, navigate — composing reusable actions.</span>
+    </details>
+
+    <!-- ========================= -->
+    <!-- LECTURE 4 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 4 — Motion & Control</span>
+          <span class="summary-meta">≈2 hrs · Project 4</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 4.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>4.1 Forward and Inverse Kinematics: numerical IK, constraints, and singularities</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: damped least squares, joint limits, redundancy.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">IK library docs / examples.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to set up IK objectives and diagnose failures."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 4.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>4.2 Trajectories: interpolation, timing, limits, jerk</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: smooth motion, constraints, safe parameterizations.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Trajectory generation references.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to go from waypoints to smooth controllable motion."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 4.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>4.3 Control: PID vs impedance, position vs torque</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: stability intuition, compliance, safe interaction.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Control references (practical).</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to pick controllers based on the task and hardware."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 4.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>4.4 Stability and compliance: stepping, stance, and constraint handling</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: stable sequences, constraints, contact transitions.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Walking basics / balance control notes.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — the minimum viable stability toolkit for early humanoids."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 4.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>4.5 Project 4 Overview: make the body move smoothly (IK + trajectories)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: implement IK + trajectory controller in sim (or hardware limb), show smooth motion.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Project walkthrough.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 4.</span>
+                </div>
+              </div>
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables: motion demo video, plots/logs, notes on stability/limits."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>3. Planning</b>
-        <span class="muted">Search, heuristics, symbolic planning, task & motion planning intuition.</span>
-      </div>
-      <div class="outline-item">
-        <b>4. Robustness</b>
-        <span class="muted">Monitoring, recovery, replanning, uncertainty and failure handling.</span>
-      </div>
-      <div class="outline-item">
-        <b>Capstone</b>
-        <span class="muted">A multi-step household behavior (e.g., pick → carry → place) with recovery.</span>
-      </div>
-    </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- PART III -->
+<div id="part3" class="section">
+  <h2>Part III — Fire: Motion → Behavior</h2>
+  <p class="muted"><b>Lectures:</b> 5–6 · <b>Projects:</b> 5–6 · <b>Total:</b> ≈4 hrs</p>
+
+  <div class="quote">
+    <p>“Behavior is always directed toward something.”</p>
+    <div class="attribution">— Niko Tinbergen</div>
   </div>
 
-  <!-- BOOK IV -->
-  <div id="book4" class="section">
-    <h2>Book IV — Behavior → Learning</h2>
-    <p class="muted"><b>Element:</b> Air / Fu · <b>Theme:</b> Expansion</p>
+  <h3>Lectures & Units (Expandable)</h3>
 
-    <div class="quote">
-      <p>“We can only see a short distance ahead, but we can see plenty there that needs to be done.”</p>
-      <div class="attribution">— Alan Turing</div>
-    </div>
+  <div class="outline">
 
-    <h3>Outline</h3>
-    <div class="outline">
-      <div class="outline-item">
-        <b>1. Data & Demonstrations</b>
-        <span class="muted">Teleop data, datasets, labeling, evaluation pitfalls.</span>
+    <!-- ========================= -->
+    <!-- LECTURE 5 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 5 — Manipulation Skills</span>
+          <span class="summary-meta">≈2 hrs · Project 5</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 5.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>5.1 What is a “skill”? (interfaces, parameters, success conditions)</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: skills as reusable behaviors with contracts and metrics.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Skill library docs, examples, or notes.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — define skill inputs/outputs, termination, and evaluation."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 5.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>5.2 Grasping & contact basics</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: grasping fundamentals, contact forces, friction cones.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Hardware refs, gripper design notes, etc.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how end-effector choice changes what skills are possible."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 5.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>5.3 State machines / behavior trees</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: composing behaviors, FSM vs BT patterns, reactive control.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Skill implementations or tutorials.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to build reliable primitives and log failures."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 5.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>5.4 Robustness and Recovery</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: what skills need to do to be robust and recover from failures.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Robustness and recovery notes.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — define observations, uncertainty, and detection failure modes."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 5.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>5.5 Project 5 Overview</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: implement manipulation skills with state machines and recovery.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">FSM/BT patterns, recovery templates.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — concrete patterns for reliability in messy environments."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>2. Imitation Learning</b>
-        <span class="muted">Behavior cloning, DAgger intuition, representation learning basics.</span>
+    </details>
+
+    <!-- ========================= -->
+    <!-- LECTURE 6 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 6 — Task and Motion Planning</span>
+          <span class="summary-meta">≈2 hrs · Project 6</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 6.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>6.1 Classical planning intuition</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: define tasks as objectives + constraints + measurable outcomes.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Task spec templates, examples.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to write a task spec that an agent can satisfy."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 6.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>6.2 Task & motion planning</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: combining symbolic reasoning with continuous motion planning.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">BT/FSM examples and templates.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — choose a composition pattern and know its failure modes."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 6.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>6.3 Symbolic vs continuous</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: discrete decisions vs continuous execution, bridging the gap.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Planning notes / classic references.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — get intuition for planners as ‘behavior compilers’."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 6.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>6.4 Failure recovery</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: detecting failures, replanning, recovery strategies.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">TAMP references + example repos.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — a practical blueprint: plan → execute → detect → recover."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 6.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>6.5 Project 6 Overview: a multi-step behavior with recovery</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: compose 3–6 skills into one task (e.g., pick → carry → place) with recovery.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Project walkthrough.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 6.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables: demo video, behavior graph/BT, logs, failure analysis."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>3. Reinforcement Learning</b>
-        <span class="muted">Rewards, exploration, offline RL basics, safety constraints.</span>
-      </div>
-      <div class="outline-item">
-        <b>4. Generalization</b>
-        <span class="muted">Domain randomization, sim2real, compositionality, failure analysis.</span>
-      </div>
-      <div class="outline-item">
-        <b>Capstone</b>
-        <span class="muted">Train a policy that improves with more data and handles perturbations.</span>
-      </div>
-    </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- PART IV -->
+<div id="part4" class="section">
+  <h2>Part IV — Air: Behavior → Learning</h2>
+  <p class="muted"><b>Lectures:</b> 7–8 · <b>Projects:</b> 7–8 · <b>Total:</b> ≈4 hrs</p>
+
+  <div class="quote">
+    <p>“We can only see a short distance ahead, but we can see plenty there that needs to be done.”</p>
+    <div class="attribution">— Alan Turing</div>
   </div>
 
-  <!-- BOOK V -->
-  <div id="book5" class="section">
-    <h2>Book V — Learning → Human</h2>
-    <p class="muted"><b>Element:</b> Void / Ku · <b>Theme:</b> Philosophy</p>
+  <h3>Lectures & Units (Expandable)</h3>
 
-    <div class="quote">
-      <p>“The question of whether machines can think is about as relevant as whether submarines can swim.”</p>
-      <div class="attribution">— Edsger Dijkstra</div>
-    </div>
+  <div class="outline">
 
-    <h3>Outline</h3>
-    <div class="outline">
-      <div class="outline-item">
-        <b>1. Embodiment & Meaning</b>
-        <span class="muted">Why bodies matter, human-centered evaluation, what “intelligence” cashes out to.</span>
+    <!-- ========================= -->
+    <!-- LECTURE 7 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 7 — Learning to Walk</span>
+          <span class="summary-meta">≈2 hrs · Project 7</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 7.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>7.1 Why learning? limits of hand coding</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: when to use learning vs hand-coded behaviors.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Dataset schemas, logging templates.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what to record, how to structure it, and why."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 7.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>7.2 Imitation learning</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: behavior cloning, demonstration collection, covariate shift.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Teleop stack examples.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to choose a teleop interface and reduce demo noise."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 7.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>7.3 Reinforcement learning basics</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: rewards, value functions, policy gradient methods.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Benchmark/eval guides.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — concrete rules for creating meaningful evaluation."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 7.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>7.4 Simulation → reality gap</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: sim2real transfer, domain randomization, reality gap challenges.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Vision encoder references.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how representation choices affect sample efficiency and generalization."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 7.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>7.5 Project 7 Overview</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: what “supervision” means in robotics and where it comes from.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Repo folder for Project 7.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverables and project overview."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>2. Human-Robot Interaction</b>
-        <span class="muted">Interfaces, trust, usability, teleoperation as collaboration.</span>
+    </details>
+
+    <!-- ========================= -->
+    <!-- LECTURE 8 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 8 — Generative & VLA Policies</span>
+          <span class="summary-meta">≈2 hrs · Project 8</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 8.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>8.1 From policies to distributions</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: from deterministic to probabilistic policies.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">IL notes / code examples.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to train a baseline IL policy and evaluate it honestly."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 8.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>8.2 Diffusion policies intuition</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: how diffusion models work for robotics policies.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">DAgger references + code.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to implement corrections and measure improvement."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 8.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>8.3 Vision-language-action models</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: VLA models and multimodal robotics policies.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">RL primers + practice repos.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what to try first, and how to avoid common RL traps."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 8.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>8.4 Instruction following & grounding</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: how robots understand and follow natural language instructions.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Offline RL references.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — understand distributional shift and conservative objectives."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 8.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>8.5 Project 8 Overview</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: project walkthrough and deliverables.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Sim2real + DR references.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — design a generalization test suite and interpret failures."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </div>
-      <div class="outline-item">
-        <b>3. Safety & Ethics</b>
-        <span class="muted">Failure modes, incentives, deployment risks, responsible design.</span>
-      </div>
-      <div class="outline-item">
-        <b>4. The Future of Work & Agency</b>
-        <span class="muted">Robots as tools, autonomy, abundance vs control, open ecosystems.</span>
-      </div>
-      <div class="outline-item">
-        <b>Capstone</b>
-        <span class="muted">Write a short “builder’s manifesto” + demo a human-in-the-loop robot workflow.</span>
-      </div>
-      <div class="outline-item">
-        <b>Final Project</b>
-        <span class="muted">Now you have all the pieces build a humanoid from scratch.</span>
-      </div>
-    </div>
+    </details>
+
   </div>
+</div>
+
+  <!-- PART V -->
+<!-- PART V -->
+<div id="part5" class="section">
+  <h2>Part V — Void: Learning → Humanoid</h2>
+  <p class="muted"><b>Lectures:</b> 9–10 · <b>Projects:</b> 9–10 · <b>Total:</b> ≈4 hrs</p>
+
+  <div class="quote">
+    <p>“The question of whether machines can think is about as relevant as whether submarines can swim.”</p>
+    <div class="attribution">— Edsger Dijkstra</div>
+  </div>
+
+  <h3>Lectures & Units (Expandable)</h3>
+
+  <div class="outline">
+
+    <!-- ========================= -->
+    <!-- LECTURE 9 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 9 — Reflection & Meaning</span>
+          <span class="summary-meta">≈2 hrs · Project 9</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 9.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>9.1 Why humanoids?</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: why build humanoid robots and their unique advantages.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Embodiment essays, key papers, talks.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — what embodiment is, and why ‘just scale the model’ isn’t enough."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 9.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>9.2 Labor, automation, and power</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: Labor, automation, and power dynamics in robotics.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Labor, automation, and power dynamics in robotics.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to define an eval that aligns with real human value."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 9.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>9.3 Trust, safety, alignment</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: building trustworthy and safe robotic systems.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Shared autonomy + interface refs.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — design principles for safe, usable human-robot workflows."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 9.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>9.4 Sci-fi as design space</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: using science fiction to explore robot futures.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Safety checklists, standards notes.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — practical safety engineering and threat modeling for robots."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 9.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>9.5 Manifesto Overview</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: project walkthrough and deliverables.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Ethics readings, policy notes, essays.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to reason about tradeoffs: capability vs safety vs freedom."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </details>
+
+    <!-- ========================= -->
+    <!-- LECTURE 10 -->
+    <!-- ========================= -->
+    <details class="outline-item">
+      <summary>
+        <span class="summary-left">
+          <span class="summary-title">Lecture 10 — Final Integration</span>
+          <span class="summary-meta">≈2 hrs · Project 10</span>
+        </span>
+        <span class="summary-caret">Expand ▾</span>
+      </summary>
+
+      <div class="details-body">
+        <ul class="unit-list">
+
+          <!-- Unit 10.1 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>10.1 System integration</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: how the five parts connect into one coherent builder mindset.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Course map / summary notes.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to reason about system bottlenecks and prioritize work."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 10.2 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>10.2 Debugging embodied systems</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: debugging strategies for physical robot systems.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">License comparisons, standards docs, repo templates.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to publish hardware/software so others can actually build it."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 10.3 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>10.3 Cost, reproducibility, openness</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: making robotics accessible and reproducible.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Essays, sci-fi, philosophy readings.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — build a personal viewpoint grounded in technical reality."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 10.4 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>Demo and evaluation criteria</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: Demo and evaluation criteria.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Prompt + examples talk.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Template doc + exemplar projects.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — deliverable: a 1-page manifesto you can publish with your final robot."></textarea>
+              </div>
+            </div>
+          </li>
+
+          <!-- Unit 10.5 -->
+          <li class="unit">
+            <div class="unit-top">
+              <b>10.5 Final build overview</b>
+              <span class="in-progress">⚙️ In Progress</span>
+            </div>
+            <span class="muted">Placeholder: project walkthrough and deliverables.</span>
+
+            <div class="unit-fields">
+              <div class="unit-field">
+                <label>🎥 Video (URL)</label>
+                <input type="url" placeholder="https://youtube.com/watch?v=... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Video ↗</a>
+                  <span class="unit-note">Paste a URL later.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>🔗 Link (reading / repo / notes)</label>
+                <input type="url" placeholder="https://... (⚙️ In Progress)" value="">
+                <div class="unit-actions">
+                  <a class="unit-link" href="#" target="_blank" rel="noopener">Open Link ↗</a>
+                  <span class="unit-note">Integration checklist / BOM template.</span>
+                </div>
+              </div>
+
+              <div class="unit-field">
+                <label>📝 Description (what you’ll learn)</label>
+                <textarea placeholder="⚙️ In Progress — how to ship an integrated system without drowning in scope."></textarea>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</div>
 
   <script>
     function toggleMenu() {
