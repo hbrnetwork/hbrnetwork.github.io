@@ -8,7 +8,7 @@ This repo hosts the source for the **HomeBrew Robotics Network website** and rel
 HBRN is a decentralized, open, community-driven effort to make **helpful low-cost household robots as ubiquitous and hackable as personal computers.**
 
 <p align="center">
-  <img src="hbrn_logo.png" alt="HomeBrew Robotics Network logo" width="260">
+  <img src="img/hbrn_logo.png" alt="HomeBrew Robotics Network logo" width="260">
 </p>
 
 ---
@@ -188,7 +188,7 @@ If you see “Altair-era” energy in current robotics, you’re in the right pl
 ├── README.md              # You are here
 ├── docs/                  # Longer-form design docs & standards
 ├── index.html             # GitHub Pages / website source
-├── hbrn-logo.png
+├── img                    # Images, logos, etc.
 ├── examples/              # Example configs, build guides, curriculum
 └── org/                   # Templates for new nodes, proposals, etc.
 ```

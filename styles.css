@@ -482,3 +482,47 @@ html { scroll-behavior: smooth; }
     opacity: 0.75;
     font-weight: 900;
 }
+
+.collab-logos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.collab-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+
+  background: rgba(255,255,255,1);
+  border-radius: 14px;   /* ← rounded container */
+  border: 1px solid rgba(0,0,0,0.06);
+
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.collab-logo:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.collab-logo img{
+  height: 56px;       /* ← main size control */
+  width: auto;
+  max-width: 140px;   /* prevents Menlo from stretching */
+  object-fit: contain;
+  filter: grayscale(0%);
+  opacity: 0.9;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+/* smaller on mobile */
+@media (max-width: 520px){
+  .collab-logo img{
+    height: 22px;
+    max-width: 110px;
+  }
+}
